@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-function saveJsonToFile(data, filename = "Json.md") {
+function saveJsonToFile(data, filename) {
     fs.writeFileSync(filename, data);
     console.log(`JSON saved to ${filename}`);
 }

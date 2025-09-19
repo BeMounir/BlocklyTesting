@@ -4,6 +4,7 @@
   "dependencies": {
     "blockly": "^12.3.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "node": "^24.8.0"
   }
 }
