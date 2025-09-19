@@ -1,0 +1,39 @@
+{
+  "commands": [
+    {
+      "type": "repeat",
+      "times": {
+        "type": "number",
+        "value": 756
+      },
+      "commands": [
+        {
+          "type": "if",
+          "condition": {
+            "condition": "robotDetectsObstacle"
+          },
+          "commands": [
+            {
+              "action": "moveForward",
+              "value": 10
+            },
+            {
+              "action": "moveLeft",
+              "value": 99999999999999
+            },
+            {
+              "action": "stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "print",
+      "value": {
+        "type": "text",
+        "value": "hi"
+      }
+    }
+  ]
+}

@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BlocklyTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/saveJson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/saveJson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="push">
+      <change beforePath="$PROJECT_DIR$/Json.md" beforeDir="false" afterPath="$PROJECT_DIR$/Json.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +78,23 @@
       <workItem from="1758286286120" duration="262000" />
       <workItem from="1758286686134" duration="317000" />
       <workItem from="1758287022499" duration="2930000" />
-      <workItem from="1758290872174" duration="1745000" />
+      <workItem from="1758290872174" duration="2160000" />
     </task>
+    <task id="LOCAL-00001" summary="reordered the project">
+      <created>1758292809972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758292809972</updated>
+    </task>
+    <task id="LOCAL-00002" summary="push">
+      <created>1758292837442</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758292837442</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,5 +110,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="reordered the project" />
+    <MESSAGE value="push" />
+    <option name="LAST_COMMIT_MESSAGE" value="push" />
   </component>
 </project>
