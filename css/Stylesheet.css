@@ -1,0 +1,81 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #5481B7;
+    text-align: center;
+}
+
+#mainContainer {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px auto;
+    max-width: 1400px;
+}
+
+#blocklyDiv {
+    height: 70vh;
+    flex: 2;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-height: 400px;
+    background-color: white;
+}
+
+#text {
+    height: 67.5vh;
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 20px;
+    resize: none;
+    background-color: white;
+}
+
+#runBtn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color: #5481B7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #44627a;
+}
+
+.blocklyMainBackground {
+    fill: #fc0000;
+}
+
+#buttonDiv {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Mobile width */
+
+@media (max-width: 768px) {
+    #mainContainer{
+        flex-direction: column;
+    }
+    /*#blocklyDiv {*/
+    /*    flex-direction: column;*/
+    /*    min-height: 500px;*/
+    /*    min-width: 500px;*/
+    /*}*/
+}
