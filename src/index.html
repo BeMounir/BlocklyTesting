@@ -2,30 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Blockly test</title>
+    <title>WailSalutem Blockly</title>
     <script src="https://unpkg.com/blockly@9.0.0/blockly.min.js"></script>
     <link rel="stylesheet" href="css/Stylesheet.css">
 </head>
 <body>
-<h1>Blockly Test</h1>
+<h1>WailSalutem Scratch Environment</h1>
 <div id="mainContainer">
     <div id="blocklyDiv" class="blocklyDiv"></div>
-    <textarea id="text" disabled></textarea>
+    <label for="text"></label><textarea id="text" disabled></textarea>
 </div>
 
 <xml id="toolbox" style="display: none">
     <category name="Robot" colour="#FF6680">
+        <block type="event_call"></block>
+        <block type="robot_detects"></block>
+        <block type="robot_detects_bottle"></block>
+        <block type="wait"></block>
+    </category>
+    <category name="Beweging" colour="#FF8C1A">
         <block type="robot_forward"></block>
         <block type="robot_left"></block>
         <block type="robot_right"></block>
         <block type="robot_backward"></block>
+        <block type="turn_left"></block>
+        <block type="turn_right"></block>
         <block type="robot_stop"></block>
-        <block type="event_call"></block>
-        <block type="robot_detects"></block>
-        <block type="wait"></block>
     </category>
     <category name="Logic" colour="#5C81A6">
         <block type="controls_if"></block>
+        <block type="controls_whileUntil"></block>
     </category>
     <category name="Loops" colour="#5CA65C">
         <block type="controls_repeat_ext"></block>

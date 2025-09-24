@@ -19,6 +19,10 @@ const defaultOptions = {
     css: true,
 };
 
+// Dit zijn de custom blocks voor de robot. Je kan hier meer blocks toevoegen als je wilt.
+// Je kan gewoon eentje kopiëren en plakken en dan de naam en de velden aanpassen. Hier kan je documentatie vinden:
+// https://developers.google.com/blockly/guides/create-custom-blocks/overview?hl=en
+
 Blockly.Blocks['robot_forward'] = {
     init: function () {
         this.appendDummyInput()
@@ -31,10 +35,6 @@ Blockly.Blocks['robot_forward'] = {
         this.setTooltip("Move the robot forward");
     }
 };
-
-// Dit zijn de custom blocks voor de robot. Je kan hier meer blocks toevoegen als je wilt.
-// Je kan gewoon eentje kopiëren en plakken en dan de naam en de velden aanpassen. Hier kan je documentatie vinden:
-// https://developers.google.com/blockly/guides/create-custom-blocks/overview?hl=en
 
 Blockly.Blocks['robot_left'] = {
     init: function () {
@@ -110,6 +110,16 @@ Blockly.Blocks['robot_detects'] = {
     }
 };
 
+Blockly.Blocks['robot_detects_bottle'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Robot detects bottle");
+        this.setOutput(true, "Boolean");
+        this.setColour(50);
+        this.setTooltip("Returns true if the robot detects a bottle");
+    }
+};
+
 Blockly.Blocks['wait'] = {
     init: function () {
         this.appendDummyInput()
@@ -122,6 +132,32 @@ Blockly.Blocks['wait'] = {
         this.setTooltip("Wait for specified seconds");
     }
 };
+
+Blockly.Blocks['turn_left'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Turn Left ")
+            .appendField(new Blockly.FieldAngle(90), "ANGLE")
+            .appendField("degrees");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip("Turn the robot left by specified degrees");
+    }
+};
+
+Blockly.Blocks['turn_right'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Turn Right ")
+            .appendField(new Blockly.FieldAngle(90), "ANGLE")
+            .appendField("degrees");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip("Turn the robot right by specified degrees");
+    }
+}
 
 // Dit hier is voor de JSON-bestand aanmaken voor de robot.
 function blockToJson(block) {
@@ -142,6 +178,12 @@ function blockToJson(block) {
             return {action: "wait", value: parseInt(block.getFieldValue("DIST"))};
         case "robot_detects":
             return {condition: "robotDetectsObstacle"};
+        case "robot_detects_bottle":
+            return {condition: "robotDetectsBottle"};
+        case "turn_left":
+            return {action: "turnLeft", value: parseInt(block.getFieldValue("ANGLE"))};
+        case "turn_right":
+            return {action: "turnRight", value: parseInt(block.getFieldValue("ANGLE"))};
 
         case "controls_if": {
             const conditionBlock = block.getInputTargetBlock("IF0");
@@ -172,6 +214,29 @@ function blockToJson(block) {
             }
             return {type: "repeat", times, commands};
         }
+
+        case "controls_whileUntil": {
+            const mode = block.getFieldValue("MODE");
+
+            const condBlock = block.getInputTargetBlock("BOOL");
+            const condition = blockToJson(condBlock);
+
+            const doBlock = block.getInputTargetBlock("DO");
+            const commands = [];
+            let current = doBlock;
+            while (current) {
+                const cmd = blockToJson(current);
+                if (cmd) commands.push(cmd);
+                current = current.getNextBlock();
+            }
+
+            return {
+                type: mode === "UNTIL" ? "repeatUntil" : "while",
+                condition,
+                commands
+            };
+        }
+
 
         case "math_number":
             return {type: "number", value: Number(block.getFieldValue("NUM"))};
