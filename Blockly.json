@@ -1,49 +1,20 @@
 {
   "commands": [
     {
-      "type": "repeatUntil",
-      "condition": {
-        "condition": "robotDetectsBottle"
-      },
+      "type": "while",
+      "condition": null,
       "commands": [
         {
-          "action": "turnLeft",
-          "value": 45
-        },
-        {
-          "action": "wait",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "type": "if",
-      "condition": {
-        "condition": "robotDetectsBottle"
-      },
-      "commands": [
-        {
-          "action": "moveForward",
+          "action": "moveLeft",
           "value": 10
         },
         {
-          "action": "wait",
-          "value": 1
-        },
-        {
-          "action": "moveLeft",
-          "value": 5
-        },
-        {
           "action": "moveForward",
-          "value": 20
+          "value": 757
         },
         {
           "action": "turnLeft",
-          "value": 90
-        },
-        {
-          "action": "stop"
+          "value": 105
         }
       ]
     }

@@ -159,6 +159,18 @@ Blockly.Blocks['turn_right'] = {
     }
 }
 
+Blockly.Blocks['activate_pin'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Activate Pin ")
+            .appendField(new Blockly.FieldNumber(1,0), "DIST")
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip("Activate a specific pin");
+    }
+}
+
 // Dit hier is voor de JSON-bestand aanmaken voor de robot.
 function blockToJson(block) {
     if (!block) return null;
@@ -184,6 +196,8 @@ function blockToJson(block) {
             return {action: "turnLeft", value: parseInt(block.getFieldValue("ANGLE"))};
         case "turn_right":
             return {action: "turnRight", value: parseInt(block.getFieldValue("ANGLE"))};
+        case "activate_pin":
+            return {action: "activatePin", value: parseInt(block.getFieldValue("DIST"))};
 
         case "controls_if": {
             const conditionBlock = block.getInputTargetBlock("IF0");
@@ -236,7 +250,6 @@ function blockToJson(block) {
                 commands
             };
         }
-
 
         case "math_number":
             return {type: "number", value: Number(block.getFieldValue("NUM"))};
