@@ -89,3 +89,47 @@ button:active {
         height: 50vh;
     }
 }
+
+header {
+    display: flex;
+    justify-content: space-between; /* pushes left and right logos apart */
+    align-items: center;
+    background-color: #5481B7;
+    color: white;
+    padding: 10px 20px;
+}
+
+header img {
+    height: 80px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .logo img {
+    height: 80px;
+}
+
+header .title h1 {
+    margin: 0;
+    font-size: 18px;
+}
+
+header .title span {
+    font-weight: bold;
+}
+
+header .subtitle {
+    margin: 0;
+    font-size: 10px;
+}
+
+header .icons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 30px;
+}

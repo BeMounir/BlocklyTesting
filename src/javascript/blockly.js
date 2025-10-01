@@ -163,7 +163,7 @@ Blockly.Blocks['activate_pin'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Activate Pin ")
-            .appendField(new Blockly.FieldNumber(1,0), "DIST")
+            .appendField(new Blockly.FieldNumber(1, 0), "DIST")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(160);
@@ -171,34 +171,149 @@ Blockly.Blocks['activate_pin'] = {
     }
 }
 
+Blockly.Blocks['camera_detects_object'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When camera detects object")
+            .appendField(new Blockly.FieldTextInput("object"), "OBJECT");
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip("Triggered when the camera sees the specified object");
+    }
+};
+
+Blockly.Blocks['camera_gesture'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When hand camera gesture =")
+            .appendField(new Blockly.FieldDropdown([
+                ["Up", "HAND_UP"],
+                ["Left", "HAND_LEFT"],
+                ["Right", "HAND_RIGHT"]
+            ]), "GESTURE");
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip("Triggered when camera detects a specific gesture");
+    }
+};
+
+Blockly.Blocks['camera_ml_label'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Camera last ML label");
+        this.setOutput(true, "String");
+        this.setColour(120);
+        this.setTooltip("Returns the last label predicted by the camera ML model");
+    }
+};
+
+Blockly.Blocks['microphone_sound'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When sound =")
+            .appendField(new Blockly.FieldDropdown([
+                ["Yes", "SPEECH_YES"],
+                ["No", "SPEECH_NO"],
+                ["Up", "SPEECH_UP"],
+                ["Down", "SPEECH_DOWN"],
+                ["Left", "SPEECH_LEFT"],
+                ["Right", "SPEECH_RIGHT"],
+                ["On", "SPEECH_ON"],
+                ["Off", "SPEECH_OFF"],
+                ["Stop", "SPEECH_STOP"],
+                ["Go", "SPEECH_GO"],
+                ["Silence", "SPEECH_SILENCE"],
+                ["Unknown", "SPEECH_UNKNOWN"]
+            ]), "SPEECH_DETECTION");
+        this.setNextStatement(true, null);
+        this.setColour(60);
+        this.setTooltip("Triggered when the microphone detects a specific keyword");
+    }
+};
+
+Blockly.Blocks['microphone_ml_label'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Microphone last ML label ");
+        this.setOutput(true, "String");
+        this.setColour(60);
+        this.setTooltip("Returns the last label predicted by the audio ML model");
+    }
+};
+
+Blockly.Blocks['distance_sensor_value'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Distance (cm)");
+        this.setOutput(true, "Number");
+        this.setColour(180);
+        this.setTooltip("Returns distance measured by the sensor in cm");
+    }
+};
+
+Blockly.Blocks['distance_sensor_less_than'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When distance <")
+            .appendField(new Blockly.FieldNumber(10, 0), "DIST")
+            .appendField("cm");
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip("Triggered when the distance sensor reads less than the specified value");
+    }
+};
+
+Blockly.Blocks['on_start'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When robot starts");
+        this.appendStatementInput("DO")
+            .appendField("do");
+        this.setColour(300);
+        this.setTooltip("Triggered when the robot starts");
+    }
+};
+
+Blockly.Blocks['button_pressed'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When button")
+            .appendField(new Blockly.FieldDropdown([
+                ["A", "A"],
+                ["B", "B"]
+            ]), "BUTTON")
+            .appendField("pressed");
+        this.appendStatementInput("DO")
+            .appendField("do");
+        this.setColour(300);
+        this.setTooltip("Triggered when a specific button is pressed");
+    }
+};
+
+const blockHandlers = {
+    robot_forward: b => ({action: "moveForward", value: parseInt(b.getFieldValue("DIST"))}),
+    robot_backward: b => ({action: "moveBackward", value: parseInt(b.getFieldValue("DIST"))}),
+    robot_left: b => ({action: "moveLeft", value: parseInt(b.getFieldValue("DIST"))}),
+    robot_right: b => ({action: "moveRight", value: parseInt(b.getFieldValue("DIST"))}),
+    robot_stop: () => ({action: "stop"}),
+    wait: b => ({action: "wait", value: parseInt(b.getFieldValue("DIST"))}),
+    robot_detects: () => ({condition: "robotDetectsObstacle"}),
+    robot_detects_bottle: () => ({condition: "robotDetectsBottle"}),
+    turn_left: b => ({action: "turnLeft", value: parseInt(b.getFieldValue("ANGLE"))}),
+    turn_right: b => ({action: "turnRight", value: parseInt(b.getFieldValue("ANGLE"))}),
+    activate_pin: b => ({action: "activatePin", value: parseInt(b.getFieldValue("DIST"))}),
+    math_number: b => ({type: "number", value: Number(b.getFieldValue("NUM"))}),
+    text: b => ({type: "text", value: b.getFieldValue("TEXT")})
+};
+
 // Dit hier is voor de JSON-bestand aanmaken voor de robot.
 function blockToJson(block) {
     if (!block) return null;
 
+    if (blockHandlers[block.type]) {
+        return blockHandlers[block.type](block);
+    }
     switch (block.type) {
-        case "robot_forward":
-            return {action: "moveForward", value: parseInt(block.getFieldValue("DIST"))};
-        case "robot_backward":
-            return {action: "moveBackward", value: parseInt(block.getFieldValue("DIST"))};
-        case "robot_left":
-            return {action: "moveLeft", value: parseInt(block.getFieldValue("DIST"))};
-        case "robot_right":
-            return {action: "moveRight", value: parseInt(block.getFieldValue("DIST"))};
-        case "robot_stop":
-            return {action: "stop"};
-        case "wait":
-            return {action: "wait", value: parseInt(block.getFieldValue("DIST"))};
-        case "robot_detects":
-            return {condition: "robotDetectsObstacle"};
-        case "robot_detects_bottle":
-            return {condition: "robotDetectsBottle"};
-        case "turn_left":
-            return {action: "turnLeft", value: parseInt(block.getFieldValue("ANGLE"))};
-        case "turn_right":
-            return {action: "turnRight", value: parseInt(block.getFieldValue("ANGLE"))};
-        case "activate_pin":
-            return {action: "activatePin", value: parseInt(block.getFieldValue("DIST"))};
-
         case "controls_if": {
             const conditionBlock = block.getInputTargetBlock("IF0");
             const condition = blockToJson(conditionBlock);
@@ -251,18 +366,12 @@ function blockToJson(block) {
             };
         }
 
-        case "math_number":
-            return {type: "number", value: Number(block.getFieldValue("NUM"))};
-
         case "math_arithmetic": {
             const left = blockToJson(block.getInputTargetBlock("A"));
             const right = blockToJson(block.getInputTargetBlock("B"));
             const op = block.getFieldValue("OP");
             return {type: "math", op, left, right};
         }
-
-        case "text":
-            return {type: "text", value: block.getFieldValue("TEXT")};
 
         case "text_print": {
             const valueBlock = block.getInputTargetBlock("TEXT");

@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>WailSalutem Blockly</title>
+    <title>WailSalutem AIRoboBlocks</title>
     <script src="https://unpkg.com/blockly@9.0.0/blockly.min.js"></script>
     <link rel="stylesheet" href="css/Stylesheet.css">
 </head>
 <body>
-<h1>WailSalutem Scratch Environment</h1>
+
+<header>
+    <div class="left-logo">
+        <img class="roboLogo" src="image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
+    </div>
+    <div class="right-logo">
+        <img class="wailsalutemLogo" src="image/logo.png" alt="WAIL Salutem Logo">
+    </div>
+</header>
+
+
+<h1>WailSalutem AIRoboBlocks</h1>
 <div id="mainContainer">
     <div id="blocklyDiv" class="blocklyDiv"></div>
     <label for="text"></label><textarea id="text" disabled></textarea>
@@ -28,6 +39,20 @@
         <block type="turn_left"></block>
         <block type="turn_right"></block>
         <block type="robot_stop"></block>
+    </category>
+    <category name="Unsorted" colour="#FFCCBB">
+        <block type="camera_detects_object"></block>
+        <block type="camera_gesture"></block>
+        <block type="camera_ml_label"></block>
+        <block type="microphone_sound"></block>
+        <block type="microphone_ml_label"></block>
+        <block type="distance_sensor_value"></block>
+        <block type="distance_sensor_less_than"></block>
+        <block type="on_start"></block>
+        <block type="button_pressed"></block>
+    </category>
+    <category name="Objects" colour="2CFF5A">
+
     </category>
     <category name="Logic" colour="#5C81A6">
         <block type="controls_if"></block>
@@ -53,7 +78,6 @@
     <button id="loadBlocksBtn">Load Blocks</button>
     <input type="file" id="loadBlocks" accept=".xml" style="display:none"/>
 </div>
-
 
 <script src="javascript/blockly.js"></script>
 </body>
