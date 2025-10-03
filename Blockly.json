@@ -1,35 +1,12 @@
 {
   "commands": [
     {
-      "type": "if",
-      "condition": {
-        "condition": "robotDetectsObstacle"
-      },
-      "commands": [
-        {
-          "action": "moveForward",
-          "value": 10
-        },
-        {
-          "action": "wait",
-          "value": 1
-        },
-        {
-          "action": "moveLeft",
-          "value": 5
-        },
-        {
-          "action": "moveForward",
-          "value": 20
-        },
-        {
-          "action": "turnLeft",
-          "value": 225
-        },
-        {
-          "action": "stop"
-        }
-      ]
+      "action": "moveForward",
+      "value": 10
+    },
+    {
+      "action": "moveLeft",
+      "value": 10
     }
   ]
 }
