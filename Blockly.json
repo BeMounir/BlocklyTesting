@@ -3,10 +3,6 @@
     {
       "action": "moveForward",
       "value": 10
-    },
-    {
-      "action": "moveLeft",
-      "value": 10
     }
   ]
 }

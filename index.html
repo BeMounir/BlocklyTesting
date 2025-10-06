@@ -50,6 +50,7 @@
         <block type="distance_sensor_less_than"></block>
         <block type="on_start"></block>
         <block type="button_pressed"></block>
+        <block type="obstacle_distance"></block>
     </category>
     <category name="Objects" colour="2CFF5A">
 
@@ -73,10 +74,11 @@
 </xml>
 
 <div id="buttonDiv">
-    <button id="runBtn">Run</button>
-    <button id="saveBlocks">Save Blocks</button>
-    <button id="loadBlocksBtn">Load Blocks</button>
+    <button id="runBtn">Sturen naar de robot</button>
+    <button id="saveBlocks">Project Opslaan</button>
+    <button id="loadBlocksBtn">Project laden</button>
     <input type="file" id="loadBlocks" accept=".xml" style="display:none"/>
+    <button id="newBtn">Nieuwe Project</button>
 </div>
 
 <script src="src/javascript/blockly.js"></script>

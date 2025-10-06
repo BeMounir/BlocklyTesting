@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="header en logo toegevoegd. custom blocks aangemaakt">
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="index.html file verplaatst voor plesk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +64,11 @@
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\Image" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\X\IdeaProjects\BlocklyTest" />
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\app\zip" />
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src" />
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\javascript" />
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\css" />
-      <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\server" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -83,7 +86,7 @@
       <workItem from="1758287022499" duration="2930000" />
       <workItem from="1758290872174" duration="2535000" />
       <workItem from="1758315945874" duration="22469000" />
-      <workItem from="1759234908948" duration="2850000" />
+      <workItem from="1759234908948" duration="6944000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -127,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1759343503479</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="index.html file verplaatst voor plesk">
+      <created>1759495463925</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759495463925</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +161,7 @@
     <MESSAGE value="Css and while loop fixes" />
     <MESSAGE value="weet ik veel" />
     <MESSAGE value="header en logo toegevoegd. custom blocks aangemaakt" />
-    <option name="LAST_COMMIT_MESSAGE" value="header en logo toegevoegd. custom blocks aangemaakt" />
+    <MESSAGE value="index.html file verplaatst voor plesk" />
+    <option name="LAST_COMMIT_MESSAGE" value="index.html file verplaatst voor plesk" />
   </component>
 </project>

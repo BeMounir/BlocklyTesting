@@ -162,8 +162,10 @@ Blockly.Blocks['turn_right'] = {
 Blockly.Blocks['activate_pin'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Activate Pin ")
+            .appendField("Stel LED ")
             .appendField(new Blockly.FieldNumber(1, 0), "DIST")
+            .appendField("op kleur ")
+            .appendField(new Blockly.FieldColour("#ff0000"), "COLOR")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(160);
@@ -269,7 +271,7 @@ Blockly.Blocks['on_start'] = {
             .appendField("When robot starts");
         this.appendStatementInput("DO")
             .appendField("do");
-        this.setColour(300);
+        this.setColour(60);
         this.setTooltip("Triggered when the robot starts");
     }
 };
@@ -285,10 +287,27 @@ Blockly.Blocks['button_pressed'] = {
             .appendField("pressed");
         this.appendStatementInput("DO")
             .appendField("do");
-        this.setColour(300);
+        this.setColour(60);
         this.setTooltip("Triggered when a specific button is pressed");
     }
 };
+
+Blockly.Blocks['obstacle_distance'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("At obstacle distance")
+            .appendField(new Blockly.FieldDropdown([
+                ["<", "<"],
+                [">", ">"]
+            ]), "BUTTON")
+            .appendField(new Blockly.FieldNumber(1, 0), "DIST")
+            .appendField("cm");
+        this.setColour(60);
+        this.setNextStatement(true, null);
+        this.setTooltip("True when obstacle distance matches condition");
+    }
+};
+
 
 const blockHandlers = {
     robot_forward: b => ({action: "moveForward", value: parseInt(b.getFieldValue("DIST"))}),
@@ -301,7 +320,8 @@ const blockHandlers = {
     robot_detects_bottle: () => ({condition: "robotDetectsBottle"}),
     turn_left: b => ({action: "turnLeft", value: parseInt(b.getFieldValue("ANGLE"))}),
     turn_right: b => ({action: "turnRight", value: parseInt(b.getFieldValue("ANGLE"))}),
-    activate_pin: b => ({action: "activatePin", value: parseInt(b.getFieldValue("DIST"))}),
+    activate_pin: b => ({action: "activatePin", pin: parseInt(b.getFieldValue("DIST")), color: b.getFieldValue("COLOR")}),
+    obstacle_distance: b => ({condition: "obstacleDistance", operator: b.getFieldValue("BUTTON"), value: parseInt(b.getFieldValue("DIST"))}),
     math_number: b => ({type: "number", value: Number(b.getFieldValue("NUM"))}),
     text: b => ({type: "text", value: b.getFieldValue("TEXT")})
 };
@@ -489,13 +509,33 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('saveBlocks').addEventListener('click', () => {
-            if (workspace.getAllBlocks().length === 0) {
-                alert("Er is niks om op te slaan!")
-            } else {
-                downloadWorkspace(workspace)
-            }
+        if (workspace.getAllBlocks().length === 0) {
+            alert("Er is niks om op te slaan!");
+            return;
         }
-    );
+
+        const projectName = prompt("Voer een projectnaam in:", "MijnProject");
+
+        if (!projectName) {
+            alert("Opslaan geannuleerd.");
+            return;
+        }
+
+        const safeName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
+
+        const xml = Blockly.Xml.workspaceToDom(workspace);
+        const xmlText = Blockly.Xml.domToPrettyText(xml);
+        const blob = new Blob([xmlText], { type: "text/xml" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${safeName}.xml`;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        alert(`Project "${safeName}" is opgeslagen als XML-bestand.`);
+    });
+
 
     document.getElementById('loadBlocksBtn').addEventListener('click', () =>
         document.getElementById('loadBlocks').click()
@@ -505,5 +545,11 @@ window.addEventListener('DOMContentLoaded', () => {
         const file = event.target.files[0];
         if (file) uploadWorkspace(workspace, file);
         event.target.value = "";
+    });
+
+    document.getElementById('newBtn').addEventListener('click', () => {
+        if (confirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.")) {
+            workspace.clear();
+        }
     });
 });
