@@ -1,8 +1,7 @@
 {
   "commands": [
     {
-      "action": "moveForward",
-      "value": 10
+      "condition": "robotDetectsObstacle"
     }
   ]
 }

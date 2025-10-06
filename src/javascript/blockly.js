@@ -320,8 +320,16 @@ const blockHandlers = {
     robot_detects_bottle: () => ({condition: "robotDetectsBottle"}),
     turn_left: b => ({action: "turnLeft", value: parseInt(b.getFieldValue("ANGLE"))}),
     turn_right: b => ({action: "turnRight", value: parseInt(b.getFieldValue("ANGLE"))}),
-    activate_pin: b => ({action: "activatePin", pin: parseInt(b.getFieldValue("DIST")), color: b.getFieldValue("COLOR")}),
-    obstacle_distance: b => ({condition: "obstacleDistance", operator: b.getFieldValue("BUTTON"), value: parseInt(b.getFieldValue("DIST"))}),
+    activate_pin: b => ({
+        action: "activatePin",
+        pin: parseInt(b.getFieldValue("DIST")),
+        color: b.getFieldValue("COLOR")
+    }),
+    obstacle_distance: b => ({
+        condition: "obstacleDistance",
+        operator: b.getFieldValue("BUTTON"),
+        value: parseInt(b.getFieldValue("DIST"))
+    }),
     math_number: b => ({type: "number", value: Number(b.getFieldValue("NUM"))}),
     text: b => ({type: "text", value: b.getFieldValue("TEXT")})
 };
@@ -432,18 +440,6 @@ function workspaceToJson(workspace) {
     return {commands};
 }
 
-function downloadWorkspace(workspace) {
-    const xml = Blockly.Xml.workspaceToDom(workspace);
-    const xmlText = Blockly.Xml.domToPrettyText(xml);
-    const blob = new Blob([xmlText], {type: "text/xml"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "blocks.xml";
-    a.click();
-    URL.revokeObjectURL(url);
-}
-
 function uploadWorkspace(workspace, file) {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -453,11 +449,11 @@ function uploadWorkspace(workspace, file) {
             const xml = Blockly.Xml.textToDom ? Blockly.Xml.textToDom(xmlText) : Blockly.Xml.convertTextToDom(xmlText);
             Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
             setTimeout(() => {
-                alert("Het laden van jouw file is gelukt!");
+                showCustomAlert("Het laden van jouw file is gelukt!", "Success");
             }, 0.1);
         } catch (err) {
             console.error("Error loading blocks:", err);
-            alert("Invalid Blockly XML file.");
+            showCustomAlert("Geen goede Blockly XML file!", "Waarschuwing");
         }
     };
     reader.readAsText(file);
@@ -472,12 +468,12 @@ window.addEventListener('DOMContentLoaded', () => {
         if (jsonData.commands.length === 0) {
             textArea.value = 'Niks gestuurd, voeg blocks toe!';
             setTimeout(() => {
-                alert("Geen code om te sturen!");
+                showCustomAlert("Geen code om te sturen!", "Waarschuwing");
             }, 0.1);
         } else {
             textArea.value = JSON.stringify(jsonData, null, 2);
             setTimeout(() => {
-                alert("Jouw code is naar de robot gestuurd!");
+                showCustomAlert("Jouw code is naar de robot gestuurd!", "Success");
             }, 0.1);
             // alert(JSON.stringify(jsonData, null, 2));
             fetch("http://localhost:3000/save", {
@@ -510,32 +506,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('saveBlocks').addEventListener('click', () => {
         if (workspace.getAllBlocks().length === 0) {
-            alert("Er is niks om op te slaan!");
+            showCustomAlert("Er is niks om op te slaan!", "Waarschuwing");
             return;
         }
 
-        const projectName = prompt("Voer een projectnaam in:", "MijnProject");
+        showCustomPrompt("Voer een projectnaam in:", "MijnProject", (projectName) => {
+            if (!projectName) return;
 
-        if (!projectName) {
-            alert("Opslaan geannuleerd.");
-            return;
-        }
-
-        const saveName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
-
-        const xml = Blockly.Xml.workspaceToDom(workspace);
-        const xmlText = Blockly.Xml.domToPrettyText(xml);
-        const blob = new Blob([xmlText], { type: "text/xml" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `${saveName}.xml`;
-        a.click();
-        URL.revokeObjectURL(url);
-
-        alert(`Project "${saveName}" is opgeslagen.`);
+            const safeName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
+            const xml = Blockly.Xml.workspaceToDom(workspace);
+            const xmlText = Blockly.Xml.domToPrettyText(xml);
+            const blob = new Blob([xmlText], {type: "text/xml"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${safeName}.xml`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
     });
-
 
     document.getElementById('loadBlocksBtn').addEventListener('click', () =>
         document.getElementById('loadBlocks').click()
@@ -548,8 +537,9 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('newBtn').addEventListener('click', () => {
-        if (confirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.")) {
-            workspace.clear();
-        }
+        showCustomConfirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.", (confirmed) => {
+                if (confirmed) {
+                    workspace.clear();
+                    showCustomAlert("Workspace is leeggemaakt.", "Succes");}}, "Bevestiging");
     });
 });

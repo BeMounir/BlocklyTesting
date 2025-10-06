@@ -5,8 +5,10 @@
     <title>WailSalutem AIRoboBlocks</title>
     <script src="https://unpkg.com/blockly@9.0.0/blockly.min.js"></script>
     <link rel="stylesheet" href="src/css/Stylesheet.css">
+    <link rel="icon" type="src/image/png" href="src/image/favicon.PNG">
 </head>
 <body>
+
 
 <header>
     <div class="left-logo">
@@ -17,6 +19,17 @@
     </div>
 </header>
 
+<div id="popupOverlay" class="popup-overlay">
+    <div class="popup">
+        <h2 id="popupTitle">Opslaan</h2>
+        <p id="popupMessage">Voer een projectnaam in:</p>
+        <input type="text" id="popupInput" placeholder="MijnProject" />
+        <div class="popup-buttons">
+            <button id="popupCancel">Annuleren</button>
+            <button id="popupOk">OK</button>
+        </div>
+    </div>
+</div>
 
 <h1>WailSalutem AIRoboBlocks</h1>
 <div id="mainContainer">
@@ -82,5 +95,6 @@
 </div>
 
 <script src="src/javascript/blockly.js"></script>
+<script src="src/javascript/popup.js"></script>
 </body>
 </html>
