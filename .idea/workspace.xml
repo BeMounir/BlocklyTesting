@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="index.html file verplaatst voor plesk">
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="quality of life features zoals clear workspace toegevoegd en naam van workspace">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +85,7 @@
       <workItem from="1758287022499" duration="2930000" />
       <workItem from="1758290872174" duration="2535000" />
       <workItem from="1758315945874" duration="22469000" />
-      <workItem from="1759234908948" duration="6944000" />
+      <workItem from="1759234908948" duration="9416000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -137,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1759495463925</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="quality of life features zoals clear workspace toegevoegd en naam van workspace">
+      <created>1759753895531</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759753895531</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +168,7 @@
     <MESSAGE value="weet ik veel" />
     <MESSAGE value="header en logo toegevoegd. custom blocks aangemaakt" />
     <MESSAGE value="index.html file verplaatst voor plesk" />
-    <option name="LAST_COMMIT_MESSAGE" value="index.html file verplaatst voor plesk" />
+    <MESSAGE value="quality of life features zoals clear workspace toegevoegd en naam van workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="quality of life features zoals clear workspace toegevoegd en naam van workspace" />
   </component>
 </project>

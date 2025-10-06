@@ -470,7 +470,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('runBtn').addEventListener('click', () => {
         const jsonData = workspaceToJson(workspace);
         if (jsonData.commands.length === 0) {
-            textArea.value = 'Niks gestuurd, voeg code toe!';
+            textArea.value = 'Niks gestuurd, voeg blocks toe!';
             setTimeout(() => {
                 alert("Geen code om te sturen!");
             }, 0.1);
@@ -521,7 +521,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const safeName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
+        const saveName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
 
         const xml = Blockly.Xml.workspaceToDom(workspace);
         const xmlText = Blockly.Xml.domToPrettyText(xml);
@@ -529,11 +529,11 @@ window.addEventListener('DOMContentLoaded', () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = `${safeName}.xml`;
+        a.download = `${saveName}.xml`;
         a.click();
         URL.revokeObjectURL(url);
 
-        alert(`Project "${safeName}" is opgeslagen als XML-bestand.`);
+        alert(`Project "${saveName}" is opgeslagen.`);
     });
 
 

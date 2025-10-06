@@ -18,10 +18,9 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 20px;
+    gap: 10px;
     margin: 0 auto;
-    padding: 20px;
-    max-width: 1400px;
+    padding: 40px;
 }
 
 #blocklyDiv {
@@ -36,13 +35,12 @@ h1 {
 
 #text {
     flex: 1;
-    height: 71vh;
     min-height: 450px;
     border: none;
     border-radius: 1px;
     padding: 16px;
     font-family: "Fira Code", monospace;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5;
     resize: none;
     background-color: #fdfdfd;
