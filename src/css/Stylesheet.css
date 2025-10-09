@@ -40,7 +40,7 @@ h1 {
     border-radius: 1px;
     padding: 16px;
     font-family: "Fira Code", monospace;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     resize: none;
     background-color: #fdfdfd;
@@ -50,7 +50,7 @@ h1 {
 
 #buttonDiv {
     text-align: center;
-    margin: 20px 0;
+    margin: 10px 0 50px;
 }
 
 button {

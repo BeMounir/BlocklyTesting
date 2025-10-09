@@ -1,7 +1,26 @@
 {
   "commands": [
     {
-      "condition": "robotDetectsObstacle"
+      "action": "soundIntensity",
+      "op": ">",
+      "value": 50
+    },
+    {
+      "action": "moveForward",
+      "value": 10
+    },
+    {
+      "action": "wait",
+      "value": 1
+    },
+    {
+      "action": "turnRight",
+      "value": 135
+    },
+    {
+      "action": "activateLed",
+      "pin": 1,
+      "color": "#ffff33"
     }
   ]
 }

@@ -27,7 +27,7 @@ Blockly.Blocks['robot_forward'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Move Forward ")
-            .appendField(new Blockly.FieldNumber(10, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -40,7 +40,7 @@ Blockly.Blocks['robot_left'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Move Left ")
-            .appendField(new Blockly.FieldNumber(10, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -53,7 +53,7 @@ Blockly.Blocks['robot_right'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Move Right ")
-            .appendField(new Blockly.FieldNumber(10, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -66,7 +66,7 @@ Blockly.Blocks['robot_backward'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Move Backward ")
-            .appendField(new Blockly.FieldNumber(10, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -81,7 +81,7 @@ Blockly.Blocks['robot_stop'] = {
             .appendField("Stop Moving ");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(50);
+        this.setColour(160);
         this.setTooltip("Stop the robot");
     }
 };
@@ -124,7 +124,7 @@ Blockly.Blocks['wait'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Wait ")
-            .appendField(new Blockly.FieldNumber(1, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
             .appendField("Seconds ");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -159,27 +159,63 @@ Blockly.Blocks['turn_right'] = {
     }
 }
 
-Blockly.Blocks['activate_pin'] = {
+Blockly.Blocks['activate_led'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Stel LED ")
-            .appendField(new Blockly.FieldNumber(1, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
             .appendField("op kleur ")
             .appendField(new Blockly.FieldColour("#ff0000"), "COLOR")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(160);
-        this.setTooltip("Activate a specific pin");
+        this.setColour(240);
+        this.setTooltip("Activate a specific led");
+    }
+}
+
+Blockly.Blocks['activate_all_leds'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Stel alle LEDS op kleur ")
+            .appendField(new Blockly.FieldColour("#ff0000"), "COLOR")
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(240);
+        this.setTooltip("Activate all leds");
+    }
+}
+
+Blockly.Blocks['deactivate_led'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Zet LED ")
+            .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
+            .appendField("uit ")
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(240);
+        this.setTooltip("Deactivate a specific led");
+    }
+}
+
+Blockly.Blocks['deactivate_all_leds'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Zet alle LEDs uit")
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(240);
+        this.setTooltip("Deactivate all LEDS");
     }
 }
 
 Blockly.Blocks['camera_detects_object'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When camera detects object")
+            .appendField("When camera detects")
             .appendField(new Blockly.FieldTextInput("object"), "OBJECT");
         this.setNextStatement(true, null);
-        this.setColour(120);
+        this.setColour(60);
         this.setTooltip("Triggered when the camera sees the specified object");
     }
 };
@@ -189,12 +225,12 @@ Blockly.Blocks['camera_gesture'] = {
         this.appendDummyInput()
             .appendField("When hand camera gesture =")
             .appendField(new Blockly.FieldDropdown([
-                ["Up", "HAND_UP"],
-                ["Left", "HAND_LEFT"],
-                ["Right", "HAND_RIGHT"]
+                ["Up", "UP"],
+                ["Left", "LEFT"],
+                ["Right", "RIGHT"]
             ]), "GESTURE");
         this.setNextStatement(true, null);
-        this.setColour(120);
+        this.setColour(60);
         this.setTooltip("Triggered when camera detects a specific gesture");
     }
 };
@@ -214,18 +250,18 @@ Blockly.Blocks['microphone_sound'] = {
         this.appendDummyInput()
             .appendField("When sound =")
             .appendField(new Blockly.FieldDropdown([
-                ["Yes", "SPEECH_YES"],
-                ["No", "SPEECH_NO"],
-                ["Up", "SPEECH_UP"],
-                ["Down", "SPEECH_DOWN"],
-                ["Left", "SPEECH_LEFT"],
-                ["Right", "SPEECH_RIGHT"],
-                ["On", "SPEECH_ON"],
-                ["Off", "SPEECH_OFF"],
-                ["Stop", "SPEECH_STOP"],
-                ["Go", "SPEECH_GO"],
-                ["Silence", "SPEECH_SILENCE"],
-                ["Unknown", "SPEECH_UNKNOWN"]
+                ["Yes", "YES"],
+                ["No", "NO"],
+                ["Up", "UP"],
+                ["Down", "DOWN"],
+                ["Left", "LEFT"],
+                ["Right", "RIGHT"],
+                ["On", "ON"],
+                ["Off", "OFF"],
+                ["Stop", "STOP"],
+                ["Go", "GO"],
+                ["Silence", "SILENCE"],
+                ["Unknown", "UNKNOWN"]
             ]), "SPEECH_DETECTION");
         this.setNextStatement(true, null);
         this.setColour(60);
@@ -257,10 +293,10 @@ Blockly.Blocks['distance_sensor_less_than'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("When distance <")
-            .appendField(new Blockly.FieldNumber(10, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
         this.setNextStatement(true, null);
-        this.setColour(180);
+        this.setColour(60);
         this.setTooltip("Triggered when the distance sensor reads less than the specified value");
     }
 };
@@ -269,8 +305,7 @@ Blockly.Blocks['on_start'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("When robot starts");
-        this.appendStatementInput("DO")
-            .appendField("do");
+        this.setNextStatement(true, null);
         this.setColour(60);
         this.setTooltip("Triggered when the robot starts");
     }
@@ -285,8 +320,7 @@ Blockly.Blocks['button_pressed'] = {
                 ["B", "B"]
             ]), "BUTTON")
             .appendField("pressed");
-        this.appendStatementInput("DO")
-            .appendField("do");
+        this.setNextStatement(true, null);
         this.setColour(60);
         this.setTooltip("Triggered when a specific button is pressed");
     }
@@ -300,7 +334,7 @@ Blockly.Blocks['obstacle_distance'] = {
                 ["<", "<"],
                 [">", ">"]
             ]), "BUTTON")
-            .appendField(new Blockly.FieldNumber(1, 0), "DIST")
+            .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
             .appendField("cm");
         this.setColour(60);
         this.setNextStatement(true, null);
@@ -308,137 +342,33 @@ Blockly.Blocks['obstacle_distance'] = {
     }
 };
 
-
-const blockHandlers = {
-    robot_forward: b => ({action: "moveForward", value: parseInt(b.getFieldValue("DIST"))}),
-    robot_backward: b => ({action: "moveBackward", value: parseInt(b.getFieldValue("DIST"))}),
-    robot_left: b => ({action: "moveLeft", value: parseInt(b.getFieldValue("DIST"))}),
-    robot_right: b => ({action: "moveRight", value: parseInt(b.getFieldValue("DIST"))}),
-    robot_stop: () => ({action: "stop"}),
-    wait: b => ({action: "wait", value: parseInt(b.getFieldValue("DIST"))}),
-    robot_detects: () => ({condition: "robotDetectsObstacle"}),
-    robot_detects_bottle: () => ({condition: "robotDetectsBottle"}),
-    turn_left: b => ({action: "turnLeft", value: parseInt(b.getFieldValue("ANGLE"))}),
-    turn_right: b => ({action: "turnRight", value: parseInt(b.getFieldValue("ANGLE"))}),
-    activate_pin: b => ({
-        action: "activatePin",
-        pin: parseInt(b.getFieldValue("DIST")),
-        color: b.getFieldValue("COLOR")
-    }),
-    obstacle_distance: b => ({
-        condition: "obstacleDistance",
-        operator: b.getFieldValue("BUTTON"),
-        value: parseInt(b.getFieldValue("DIST"))
-    }),
-    math_number: b => ({type: "number", value: Number(b.getFieldValue("NUM"))}),
-    text: b => ({type: "text", value: b.getFieldValue("TEXT")})
+Blockly.Blocks['sound_intensity'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("When sound intensity ")
+            .appendField(new Blockly.FieldDropdown([
+                ["<", "<"],
+                [">", ">"]
+            ]), "BUTTON")
+            .appendField(new Blockly.FieldNumber(1, 50), "VALUE")
+        this.setNextStatement(true, null);
+        this.setColour(60);
+        this.setTooltip("Triggered when the distance sensor reads less than the specified value");
+    }
 };
 
-// Dit hier is voor de JSON-bestand aanmaken voor de robot.
-function blockToJson(block) {
-    if (!block) return null;
-
-    if (blockHandlers[block.type]) {
-        return blockHandlers[block.type](block);
+Blockly.Blocks['random_number'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Random number from")
+            .appendField(new Blockly.FieldNumber(1, 0), "MIN")
+            .appendField("to")
+            .appendField(new Blockly.FieldNumber(10, 0), "MAX");
+        this.setOutput(true, "Number");
+        this.setColour(230);
+        this.setTooltip("Returns a random number between two values");
     }
-    switch (block.type) {
-        case "controls_if": {
-            const conditionBlock = block.getInputTargetBlock("IF0");
-            const condition = blockToJson(conditionBlock);
-
-            const doBlock = block.getInputTargetBlock("DO0");
-            const commands = [];
-            let current = doBlock;
-            while (current) {
-                const cmd = blockToJson(current);
-                if (cmd) commands.push(cmd);
-                current = current.getNextBlock();
-            }
-            return {type: "if", condition, commands};
-        }
-
-        case "controls_repeat_ext": {
-            const timesBlock = block.getInputTargetBlock("TIMES");
-            const times = timesBlock ? blockToJson(timesBlock) : parseInt(block.getFieldValue("TIMES"));
-
-            const doBlock = block.getInputTargetBlock("DO");
-            const commands = [];
-            let current = doBlock;
-            while (current) {
-                const cmd = blockToJson(current);
-                if (cmd) commands.push(cmd);
-                current = current.getNextBlock();
-            }
-            return {type: "repeat", times, commands};
-        }
-
-        case "controls_whileUntil": {
-            const mode = block.getFieldValue("MODE");
-
-            const condBlock = block.getInputTargetBlock("BOOL");
-            const condition = blockToJson(condBlock);
-
-            const doBlock = block.getInputTargetBlock("DO");
-            const commands = [];
-            let current = doBlock;
-            while (current) {
-                const cmd = blockToJson(current);
-                if (cmd) commands.push(cmd);
-                current = current.getNextBlock();
-            }
-
-            return {
-                type: mode === "UNTIL" ? "repeatUntil" : "while",
-                condition,
-                commands
-            };
-        }
-
-        case "math_arithmetic": {
-            const left = blockToJson(block.getInputTargetBlock("A"));
-            const right = blockToJson(block.getInputTargetBlock("B"));
-            const op = block.getFieldValue("OP");
-            return {type: "math", op, left, right};
-        }
-
-        case "text_print": {
-            const valueBlock = block.getInputTargetBlock("TEXT");
-            const value = blockToJson(valueBlock);
-            return {type: "print", value};
-        }
-
-        case "event_call": {
-            const condBlock = block.getInputTargetBlock("COND");
-            const doBlock = block.getInputTargetBlock("DO");
-            const condition = blockToJson(condBlock);
-
-            const commands = [];
-            let current = doBlock;
-            while (current) {
-                const cmd = blockToJson(current);
-                if (cmd) commands.push(cmd);
-                current = current.getNextBlock();
-            }
-            return {type: "if", condition, commands};
-        }
-    }
-    return null;
-}
-
-function workspaceToJson(workspace) {
-    const blocks = workspace.getTopBlocks(true);
-    const commands = [];
-
-    blocks.forEach(block => {
-        let current = block;
-        while (current) {
-            const cmd = blockToJson(current);
-            if (cmd) commands.push(cmd);
-            current = current.getNextBlock();
-        }
-    });
-    return {commands};
-}
+};
 
 function uploadWorkspace(workspace, file) {
     const reader = new FileReader();
@@ -510,7 +440,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        showCustomPrompt("Voer een projectnaam in:", "MijnProject", (projectName) => {
+        showCustomPrompt("Voer een projectnaam in:", "MijnProject","Opslaan" , (projectName) => {
             if (!projectName) return;
 
             const safeName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
