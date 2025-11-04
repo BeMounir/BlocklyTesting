@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="changed popup and alerts to a custom one and also changed favicon">
-      <change afterPath="$PROJECT_DIR$/src/javascript/blockly_json.js" afterDir="false" />
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="added a serial connection where you can now send the json file over to the robot if its plugged in the usb. also put all the button components into one javascript file buttons.js">
+      <change afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/blockly_json.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly_json.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,13 @@
       <workItem from="1758287022499" duration="2930000" />
       <workItem from="1758290872174" duration="2535000" />
       <workItem from="1758315945874" duration="22469000" />
-      <workItem from="1759234908948" duration="22882000" />
+      <workItem from="1759234908948" duration="25938000" />
+      <workItem from="1760183892542" duration="1259000" />
+      <workItem from="1760353227543" duration="1244000" />
+      <workItem from="1760370407007" duration="8000" />
+      <workItem from="1760431156891" duration="574000" />
+      <workItem from="1760637743984" duration="2358000" />
+      <workItem from="1761570039513" duration="15854000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -161,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1759780520482</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="some popup fixes. also changed blocks and categories to make more sense, aswell as more stuff im too lazy to mention">
+      <created>1760023138578</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760023138578</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +201,8 @@
     <MESSAGE value="quality of life features zoals clear workspace toegevoegd en naam van workspace" />
     <MESSAGE value="scaling voor page is beter" />
     <MESSAGE value="changed popup and alerts to a custom one and also changed favicon" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed popup and alerts to a custom one and also changed favicon" />
+    <MESSAGE value="some popup fixes. also changed blocks and categories to make more sense, aswell as more stuff im too lazy to mention" />
+    <MESSAGE value="added a serial connection where you can now send the json file over to the robot if its plugged in the usb. also put all the button components into one javascript file buttons.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a serial connection where you can now send the json file over to the robot if its plugged in the usb. also put all the button components into one javascript file buttons.js" />
   </component>
 </project>

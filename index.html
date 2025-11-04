@@ -14,8 +14,16 @@
     <div class="left-logo">
         <img class="roboLogo" src="src/image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
     </div>
+
+<!--    <select id="languageSelect">-->
+<!--        <option value="en">English</option>-->
+<!--        <option value="nl">Nederlands</option>-->
+<!--    </select>-->
+
     <div class="right-logo">
-        <img class="wailsalutemLogo" src="src/image/logo.png" alt="WAIL Salutem Logo">
+        <a href="https://wailsalutem-foundation.com/" target="_blank">
+            <img class="wailsalutemLogo" src="src/image/logo.png" alt="WAIL Salutem Logo">
+        </a>
     </div>
 </header>
 
@@ -39,6 +47,8 @@
 
 <xml id="toolbox" style="display: none">
     <category name="Events" colour="#FFC500">
+        <block type="start_robot"></block>
+        <block type="stop_robot"></block>
         <block type="sound_intensity"></block>
         <block type="camera_detects_object"></block>
         <block type="camera_gesture"></block>
@@ -57,7 +67,7 @@
         <block type="robot_stop"></block>
         <block type="wait"></block>
     </category>
-    <category name="Light" colour="#686AC1">
+    <category name="Toon" colour="#686AC1">
         <block type="activate_led"></block>
         <block type="activate_all_leds"></block>
         <block type="deactivate_led"></block>
@@ -66,6 +76,9 @@
     <category name="Sound" colour="#FF6680">
         <block type="microphone_sound"></block>
         <block type="microphone_ml_label"></block>
+    </category>
+    <category name="Waarnemen" colour="#FF6680">
+
     </category>
 
     <category name="Functions" colour="#FF6680">
@@ -93,6 +106,8 @@
 </xml>
 
 <div id="buttonDiv">
+    <a href="https://workshoptest.wailsalutem-foundation.com/">workshop</a>
+    <button id="connectBtn">Connect naar robot</button>
     <button id="runBtn">Sturen naar de robot</button>
     <button id="saveBlocks">Project Opslaan</button>
     <button id="loadBlocksBtn">Project laden</button>
@@ -103,6 +118,7 @@
 <script src="src/javascript/blockly.js"></script>
 <script src="src/javascript/popup.js"></script>
 <script src="src/javascript/blockly_json.js"></script>
+<script src="src/javascript/buttons.js"></script>
 
 </body>
 </html>

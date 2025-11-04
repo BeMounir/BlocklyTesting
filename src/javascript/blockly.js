@@ -19,20 +19,63 @@ const defaultOptions = {
     css: true,
 };
 
+let currentLanguage = 'en';
+
+const translations = {
+    en: {
+        robot_forward: "Move Forward ",
+        robot_forward_tooltip: "Move the robot forward",
+        robot_stop: "Stop Moving",
+        robot_stop_tooltip: "Stop the robot",
+    },
+    nl: {
+        robot_forward: "Ga Vooruit",
+        robot_forward_tooltip: "Laat de robot vooruit bewegen",
+        robot_stop: "Stoppen",
+        robot_stop_tooltip: "Laat de robot stoppen",
+    }
+};
+
+function getText(blockName) {
+    return translations[currentLanguage][blockName] || blockName;
+}
+
 // Dit zijn de custom blocks voor de robot. Je kan hier meer blocks toevoegen als je wilt.
 // Je kan gewoon eentje kopiëren en plakken en dan de naam en de velden aanpassen. Hier kan je documentatie vinden:
 // https://developers.google.com/blockly/guides/create-custom-blocks/overview?hl=en
 
+Blockly.Blocks['start_robot'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("start robot");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip(getText("robot_forward_tooltip"));
+    }
+};
+
+Blockly.Blocks['stop_robot'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("stop robot");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip(getText("robot_forward_tooltip"));
+    }
+};
+
 Blockly.Blocks['robot_forward'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Move Forward ")
+            .appendField(getText("robot_forward"))
             .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(160);
-        this.setTooltip("Move the robot forward");
+        this.setTooltip(getText("robot_forward_tooltip"));
     }
 };
 
@@ -369,107 +412,3 @@ Blockly.Blocks['random_number'] = {
         this.setTooltip("Returns a random number between two values");
     }
 };
-
-function uploadWorkspace(workspace, file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        try {
-            const xmlText = e.target.result.trim();
-            console.log("Loaded XML text:", xmlText);
-            const xml = Blockly.Xml.textToDom ? Blockly.Xml.textToDom(xmlText) : Blockly.Xml.convertTextToDom(xmlText);
-            Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
-            setTimeout(() => {
-                showCustomAlert("Het laden van jouw file is gelukt!", "Success");
-            }, 0.1);
-        } catch (err) {
-            console.error("Error loading blocks:", err);
-            showCustomAlert("Geen goede Blockly XML file!", "Waarschuwing");
-        }
-    };
-    reader.readAsText(file);
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    const workspace = Blockly.inject('blocklyDiv', defaultOptions);
-    const textArea = document.getElementById('text');
-
-    document.getElementById('runBtn').addEventListener('click', () => {
-        const jsonData = workspaceToJson(workspace);
-        if (jsonData.commands.length === 0) {
-            textArea.value = 'Niks gestuurd, voeg blocks toe!';
-            setTimeout(() => {
-                showCustomAlert("Geen code om te sturen!", "Waarschuwing");
-            }, 0.1);
-        } else {
-            textArea.value = JSON.stringify(jsonData, null, 2);
-            setTimeout(() => {
-                showCustomAlert("Jouw code is naar de robot gestuurd!", "Success");
-            }, 0.1);
-            // alert(JSON.stringify(jsonData, null, 2));
-            fetch("http://localhost:3000/save", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(jsonData),
-            })
-                .then(res => res.text())
-                .then(msg => console.log(msg))
-                .catch(err => console.error("Error:", err));
-        }
-    });
-
-    const savedXml = localStorage.getItem('blocklyWorkspace');
-    if (savedXml) {
-        try {
-            const xml = Blockly.Xml.textToDom(savedXml);
-            Blockly.Xml.domToWorkspace(xml, workspace);
-            console.log("Workspace restored from localStorage.");
-        } catch (e) {
-            console.warn("Failed to load saved workspace:", e);
-        }
-    }
-
-    workspace.addChangeListener(() => {
-        const xml = Blockly.Xml.workspaceToDom(workspace);
-        const xmlText = Blockly.Xml.domToText(xml);
-        localStorage.setItem('blocklyWorkspace', xmlText);
-    });
-
-    document.getElementById('saveBlocks').addEventListener('click', () => {
-        if (workspace.getAllBlocks().length === 0) {
-            showCustomAlert("Er is niks om op te slaan!", "Waarschuwing");
-            return;
-        }
-
-        showCustomPrompt("Voer een projectnaam in:", "MijnProject","Opslaan" , (projectName) => {
-            if (!projectName) return;
-
-            const safeName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
-            const xml = Blockly.Xml.workspaceToDom(workspace);
-            const xmlText = Blockly.Xml.domToPrettyText(xml);
-            const blob = new Blob([xmlText], {type: "text/xml"});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `${safeName}.xml`;
-            a.click();
-            URL.revokeObjectURL(url);
-        });
-    });
-
-    document.getElementById('loadBlocksBtn').addEventListener('click', () =>
-        document.getElementById('loadBlocks').click()
-    );
-
-    document.getElementById('loadBlocks').addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) uploadWorkspace(workspace, file);
-        event.target.value = "";
-    });
-
-    document.getElementById('newBtn').addEventListener('click', () => {
-        showCustomConfirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.", (confirmed) => {
-                if (confirmed) {
-                    workspace.clear();
-                    showCustomAlert("Workspace is leeggemaakt.", "Succes");}}, "Bevestiging");
-    });
-});

@@ -2,25 +2,28 @@
   "commands": [
     {
       "action": "soundIntensity",
-      "op": ">",
+      "op": "<",
       "value": 50
     },
     {
       "action": "moveForward",
-      "value": 10
+      "value": 5
     },
     {
       "action": "wait",
-      "value": 1
+      "value": 5
     },
     {
       "action": "turnRight",
-      "value": 135
+      "value": 90
     },
     {
       "action": "activateLed",
       "pin": 1,
-      "color": "#ffff33"
+      "color": "#3366ff"
+    },
+    {
+      "action": "stop"
     }
   ]
 }

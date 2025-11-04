@@ -1,4 +1,6 @@
 const blockHandlers = {
+    start_robot: () => ({action: "start_test"}),
+    stop_robot: () => ({action: "stop_test"}),
     robot_forward: b => ({action: "moveForward", value: parseInt(b.getFieldValue("VALUE"))}),
     robot_backward: b => ({action: "moveBackward", value: parseInt(b.getFieldValue("VALUE"))}),
     robot_left: b => ({action: "moveLeft", value: parseInt(b.getFieldValue("VALUE"))}),
