@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="removed translate for now">
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="byte testing">
       <change afterPath="$PROJECT_DIR$/src/image/load-icon.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/image/save-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +97,7 @@
       <workItem from="1762436274559" duration="1204000" />
       <workItem from="1762519775875" duration="4565000" />
       <workItem from="1763132434927" duration="7949000" />
-      <workItem from="1763461298266" duration="1164000" />
+      <workItem from="1763461298266" duration="2400000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -186,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1762249717417</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="byte testing">
+      <created>1763484808456</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1763484808456</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +221,7 @@
     <MESSAGE value="some popup fixes. also changed blocks and categories to make more sense, aswell as more stuff im too lazy to mention" />
     <MESSAGE value="added a serial connection where you can now send the json file over to the robot if its plugged in the usb. also put all the button components into one javascript file buttons.js" />
     <MESSAGE value="removed translate for now" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed translate for now" />
+    <MESSAGE value="byte testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="byte testing" />
   </component>
 </project>
