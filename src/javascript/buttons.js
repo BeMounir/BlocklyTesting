@@ -41,13 +41,15 @@ window.addEventListener('DOMContentLoaded', () => {
             }, 100);
             return;
         }
-        textArea.value = JSON.stringify(jsonData, null, 2);
+        const encoder = new TextEncoder();
+
+        textArea.value = encoder.encode(JSON.stringify(jsonData, null, 2) + "\n");
         try {
             const encoder = new TextEncoder();
             const writer = port.writable.getWriter();
-            await writer.write(encoder.encode(JSON.stringify(jsonData)));
+            await writer.write(encoder.encode(JSON.stringify(jsonData) + "\n"));
             writer.releaseLock();
-            console.log("JSON sent to serial port:", jsonData);
+            console.log("JSON sent to serial port:", encoder.encode(JSON.stringify(jsonData) + "\n"));
         } catch (err) {
             console.error("Serial write error:", err);
             showCustomAlert("Fout bij verzenden naar robot!", "Fout");
@@ -67,7 +69,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         showCustomAlert("Jouw code is naar de robot gestuurd en opgeslagen!", "Success");
     });
-
 
     const savedXml = localStorage.getItem('blocklyWorkspace');
     if (savedXml) {

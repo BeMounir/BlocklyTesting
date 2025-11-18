@@ -1,29 +1,14 @@
 {
   "commands": [
     {
-      "action": "soundIntensity",
-      "op": "<",
-      "value": 50
+      "action": "start_test"
     },
     {
-      "action": "moveForward",
-      "value": 5
+      "action": "stop_test"
     },
     {
-      "action": "wait",
-      "value": 5
-    },
-    {
-      "action": "turnRight",
-      "value": 90
-    },
-    {
-      "action": "activateLed",
-      "pin": 1,
-      "color": "#3366ff"
-    },
-    {
-      "action": "stop"
+      "action": "moveRight",
+      "value": 788888888888888
     }
   ]
 }
