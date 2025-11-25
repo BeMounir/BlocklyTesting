@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="test fix for fabian">
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="reverted changes to sending json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +97,7 @@
       <workItem from="1763132434927" duration="7949000" />
       <workItem from="1763461298266" duration="6975000" />
       <workItem from="1764073402400" duration="392000" />
-      <workItem from="1764073863443" duration="948000" />
+      <workItem from="1764073863443" duration="1859000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -200,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1763485604902</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="reverted changes to sending json">
+      <created>1764075495551</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1764075495551</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +237,7 @@
     <MESSAGE value="removed translate for now" />
     <MESSAGE value="byte testing" />
     <MESSAGE value="test fix for fabian" />
-    <option name="LAST_COMMIT_MESSAGE" value="test fix for fabian" />
+    <MESSAGE value="reverted changes to sending json" />
+    <option name="LAST_COMMIT_MESSAGE" value="reverted changes to sending json" />
   </component>
 </project>

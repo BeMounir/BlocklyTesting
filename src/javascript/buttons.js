@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const writer = port.writable.getWriter();
             await writer.write(encoder.encode(JSON.stringify(jsonData)));
             writer.releaseLock();
-            console.log("JSON sent to serial port:", jsonData);
+            console.log("JSON sent to serial port:", JSON.stringify(jsonData, null, 2));
         } catch (err) {
             console.error("Serial write error:", err);
             showCustomAlert("Fout bij verzenden naar robot!", "Fout");
