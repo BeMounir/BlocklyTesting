@@ -41,15 +41,13 @@ window.addEventListener('DOMContentLoaded', () => {
             }, 100);
             return;
         }
-        const encoder = new TextEncoder();
-
-        textArea.value = encoder.encode(JSON.stringify(jsonData, null, 2) + "\n");
+        textArea.value = JSON.stringify(jsonData, null, 2) + "\n";
         try {
             const encoder = new TextEncoder();
             const writer = port.writable.getWriter();
-            await writer.write(encoder.encode(JSON.stringify(jsonData) + "\n"));
+            await writer.write(encoder.encode(JSON.stringify(jsonData)));
             writer.releaseLock();
-            console.log("JSON sent to serial port:", encoder.encode(JSON.stringify(jsonData) + "\n"));
+            console.log("JSON sent to serial port:", jsonData);
         } catch (err) {
             console.error("Serial write error:", err);
             showCustomAlert("Fout bij verzenden naar robot!", "Fout");
@@ -87,7 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('blocklyWorkspace', xmlText);
     });
 
-    document.getElementById('saveBlocks').addEventListener('click', () => {
+    document.getElementById('saveBlocksHeader').addEventListener('click', () => {
         if (workspace.getAllBlocks().length === 0) {
             showCustomAlert("Er is niks om op te slaan!", "Waarschuwing");
             return;
@@ -109,7 +107,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.getElementById('loadBlocksBtn').addEventListener('click', () =>
+    document.getElementById('loadBlocksHeader').addEventListener('click', () =>
         document.getElementById('loadBlocks').click()
     );
 

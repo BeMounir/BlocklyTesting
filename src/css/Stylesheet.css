@@ -18,9 +18,18 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 10px;
+    gap: 0px;
     margin: 0 auto;
     padding: 40px;
+}
+
+.blocklyToolboxDiv {
+    background-color: white;
+    border-right: 2px solid #5481B7;
+}
+
+.blocklyMainBackground {
+    stroke-width: 0px;
 }
 
 #blocklyDiv {
@@ -28,9 +37,9 @@ h1 {
     height: 75vh;
     min-height: 450px;
     border: none;
-    border-radius: 12px;
     background-color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-right: 2px solid #5481B7;
 }
 
 #text {
@@ -231,4 +240,16 @@ header {
     width: 18px;
     height: 18px;
     filter: brightness(0) invert(1);
+}
+
+#inputHeader{
+    text-align: center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    background-color: #90baf6;
 }
