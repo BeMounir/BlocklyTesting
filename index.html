@@ -11,11 +11,13 @@
 
 <header>
     <div class="left-logo">
-        <img class="roboLogo" src="src/image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
+        <img class="wailsalutemLogo" src="src/image/logo.png" alt="WAIL Salutem Logo">
     </div>
 
     <div class="header-center">
-        <a href="https://workshoptest.wailsalutem-foundation.com/">workshop</a>
+        <a class="workshopButton" style="text-decoration:none" href="https://workshoptest.wailsalutem-foundation.com/">
+            <img src="src/image/load-icon.png" alt="Load" class="icon">Workshop
+        </a>
         <select id="languageSelect">
             <option value="en">English</option>
             <option value="nl">Nederlands</option>
@@ -34,7 +36,8 @@
 
     <div class="right-logo">
         <a href="https://wailsalutem-foundation.com/" target="_blank">
-            <img class="wailsalutemLogo" src="src/image/logo.png" alt="WAIL Salutem Logo">
+            <img class="roboLogo" src="src/image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
+
         </a>
     </div>
 </header>
@@ -117,10 +120,13 @@
 </xml>
 
 <div id="buttonDiv">
-    <button id="connectBtn">Connect naar robot</button>
-    <button id="runBtn">Sturen naar de robot</button>
+    <button id="connectBtn" class="connectBtn">
+        <img src="src/image/connection-icon.png" alt="Load" class="icon">
+    </button>
+    <button id="runBtn" class="runBtn">
+        <img src="src/image/play-icon2.png" alt="Load" class="icon">
+    </button>
     <input type="file" id="loadBlocks" accept=".xml" style="display:none"/>
-    <button id="newBtn">Nieuwe Project</button>
 </div>
 
 <script src="src/javascript/blockly.js"></script>

@@ -10,9 +10,18 @@ const defaultOptions = {
         minScale: 0.3,
         scaleSpeed: 1.2
     },
-    grid: false,
+    grid:
+        {
+            spacing: 30,
+            length: 3,
+            colour: '#eaeaea',
+            snap: true
+        },
     css: true,
-};
+    move: {
+        drag: true,
+        wheel: true
+    }};
 
 let currentLanguage = 'en';
 

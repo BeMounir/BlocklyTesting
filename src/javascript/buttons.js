@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             const encoder = new TextEncoder();
             const writer = port.writable.getWriter();
-            await writer.write(encoder.encode(JSON.stringify(jsonData).trim() + "\n"));;
+            await writer.write(encoder.encode(JSON.stringify(jsonData).trim() + "\n"));
             writer.releaseLock();
             console.log("JSON sent to serial port:", JSON.stringify(jsonData).trim() + "\n");
         } catch (err) {
@@ -64,7 +64,6 @@ window.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
             console.error("Error sending to server:", err);
         }
-
         showCustomAlert("Jouw code is naar de robot gestuurd en opgeslagen!", "Success");
     });
 
@@ -117,7 +116,7 @@ window.addEventListener('DOMContentLoaded', () => {
         event.target.value = "";
     });
 
-    document.getElementById('newBtn').addEventListener('click', () => {
+    document.getElementById('newBtnHeader').addEventListener('click', () => {
         showCustomConfirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.", (confirmed) => {
             if (confirmed) {
                 workspace.clear();

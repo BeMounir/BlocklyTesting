@@ -4,11 +4,8 @@
       "action": "start_test"
     },
     {
-      "action": "stop_test"
-    },
-    {
-      "action": "moveRight",
-      "value": 788888888888888
+      "action": "moveForward",
+      "value": 10
     }
   ]
 }
