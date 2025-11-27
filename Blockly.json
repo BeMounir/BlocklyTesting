@@ -1,7 +1,13 @@
 {
   "commands": [
     {
-      "action": "start_test"
+      "action": "activateLed",
+      "pin": 1,
+      "color": "#ff0000"
+    },
+    {
+      "action": "moveBackward",
+      "value": 10
     }
   ]
 }

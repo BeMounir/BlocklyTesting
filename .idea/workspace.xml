@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="complete redesign">
-      <change afterPath="$PROJECT_DIR$/src/image/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/folder.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/folder2.png" afterDir="false" />
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="icons verandert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/save-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/save-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +101,7 @@
       <workItem from="1763132434927" duration="7949000" />
       <workItem from="1763461298266" duration="6975000" />
       <workItem from="1764073402400" duration="392000" />
-      <workItem from="1764073863443" duration="31720000" />
+      <workItem from="1764073863443" duration="32313000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -249,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1764255877388</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="icons verandert">
+      <created>1764257622332</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1764257622332</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +289,7 @@
     <MESSAGE value="changes" />
     <MESSAGE value="website ui fix" />
     <MESSAGE value="complete redesign" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete redesign" />
+    <MESSAGE value="icons verandert" />
+    <option name="LAST_COMMIT_MESSAGE" value="icons verandert" />
   </component>
 </project>

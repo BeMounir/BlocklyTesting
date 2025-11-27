@@ -129,9 +129,9 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             const encoder = new TextEncoder();
             const writer = port.writable.getWriter();
-            await writer.write(encoder.encode(JSON.stringify(jsonData).trim() + "\n"));
+            await writer.write(encoder.encode(JSON.stringify(jsonData)));
             writer.releaseLock();
-            console.log("JSON sent to serial port:", JSON.stringify(jsonData).trim() + "\n");
+            console.log("JSON sent to serial port:", jsonData);
         } catch (err) {
             console.error("Serial write error:", err);
             showCustomAlert("Fout bij verzenden naar robot!", "Fout");
