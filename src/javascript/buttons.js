@@ -5,28 +5,112 @@ document.getElementById("connectBtn").onclick = async () => {
     showCustomAlert("De robot is geconnect!", "Connected");
 };
 
-function uploadWorkspace(workspace, file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        try {
-            const xmlText = e.target.result.trim();
-            console.log("Loaded XML text:", xmlText);
-            const xml = Blockly.Xml.textToDom ? Blockly.Xml.textToDom(xmlText) : Blockly.Xml.convertTextToDom(xmlText);
-            Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
-            setTimeout(() => {
-                showCustomAlert("Het laden van jouw file is gelukt!", "Success");
-            }, 0.1);
-        } catch (err) {
-            console.error("Error loading blocks:", err);
-            showCustomAlert("Geen goede Blockly XML file!", "Waarschuwing");
-        }
-    };
-    reader.readAsText(file);
+async function uploadWorkspace(workspace, file) {
+    try {
+        const xmlText = await file.text();             // read the file
+        const xmlDom = Blockly.utils.xml.textToDom(xmlText);
+        workspace.clear();
+        Blockly.Xml.domToWorkspace(xmlDom, workspace);
+        setTimeout(() => {
+            showCustomAlert("Het laden van jouw file is gelukt!", "Success");
+        }, 0);
+    } catch (err) {
+        console.error("Error loading blocks:", err);
+        showCustomAlert("Geen goede Blockly XML file!", "Waarschuwing");
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     const workspace = Blockly.inject('blocklyDiv', defaultOptions);
     const textArea = document.getElementById('text');
+    let selectedCategory = 'events'; // default category
+
+    const categories = {
+        events: [
+            'start_robot',
+            'stop_robot',
+            'sound_intensity',
+            'camera_detects_object',
+            'camera_gesture',
+            'on_start',
+            'button_pressed',
+            'obstacle_distance',
+            'distance_sensor_less_than'
+        ],
+        movement: [
+            'robot_forward',
+            'robot_left',
+            'robot_right',
+            'robot_backward',
+            'turn_left',
+            'turn_right',
+            'robot_stop',
+            'wait'
+        ],
+        toon: [
+            'activate_led',
+            'activate_all_leds',
+            'deactivate_led',
+            'deactivate_all_leds'
+        ],
+        sound: [
+            'microphone_sound',
+            'microphone_ml_label'
+        ],
+        waarnemen: [
+            // empty
+        ],
+        functions: [
+            'math_number',
+            'math_arithmetic',
+            'logic_compare',
+            'random_number'
+        ],
+        logic: [
+            'controls_if',
+            'controls_whileUntil',
+            'controls_repeat_ext'
+        ],
+        text: [
+            'text',
+            'text_print'
+        ],
+        unsorted: [
+            'camera_ml_label',
+            'distance_sensor_value',
+            'event_call',
+            'robot_detects',
+            'robot_detects_bottle'
+        ]
+    };
+
+    const flyout = workspace.getFlyout();
+
+    if (flyout) {
+        flyout.autoClose = false;
+        flyout.setVisible(true);
+    }
+
+    function showCategory(categoryName) {
+        const blockTypes = categories[categoryName] || [];
+        const xmlArray = blockTypes.map(type => {
+            const xml = Blockly.utils.xml.createElement('block');
+            xml.setAttribute('type', type);
+            return xml;
+        });
+
+        flyout.show(xmlArray);
+    }
+
+    document.querySelectorAll('#categoryButtons button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedCategory = btn.dataset.category;
+            showCategory(selectedCategory);
+        });
+    });
+
+    // show default category at start
+    showCategory(selectedCategory);
 
     document.getElementById("runBtn").addEventListener("click", async () => {
         if (!port) {
@@ -70,7 +154,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedXml = localStorage.getItem('blocklyWorkspace');
     if (savedXml) {
         try {
-            const xml = Blockly.Xml.textToDom(savedXml);
+            const xml = Blockly.utils.xml.textToDom(savedXml);
+            workspace.clear();
             Blockly.Xml.domToWorkspace(xml, workspace);
             console.log("Workspace restored from localStorage.");
         } catch (e) {
@@ -110,11 +195,12 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('loadBlocks').click()
     );
 
-    document.getElementById('loadBlocks').addEventListener('change', (event) => {
+    document.getElementById('loadBlocks').addEventListener('change', async (event) => {
         const file = event.target.files[0];
-        if (file) uploadWorkspace(workspace, file);
+        if (file) await uploadWorkspace(workspace, file);
         event.target.value = "";
     });
+
 
     document.getElementById('newBtnHeader').addEventListener('click', () => {
         showCustomConfirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.", (confirmed) => {

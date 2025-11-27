@@ -2,6 +2,10 @@
 // https://developers.google.com/blockly/guides/configure/web/configuration_struct#the_options_dictionary
 const defaultOptions = {
     toolbox: document.getElementById('toolbox'),
+    toolboxPosition: 'start',
+    flyoutClass: 'permanentFlyout',
+    renderer: 'geras',
+    collapse: false,
     zoom: {
         controls: true,
         wheel: true,
@@ -10,18 +14,15 @@ const defaultOptions = {
         minScale: 0.3,
         scaleSpeed: 1.2
     },
-    grid:
-        {
-            spacing: 30,
-            length: 3,
-            colour: '#eaeaea',
-            snap: true
-        },
-    css: true,
-    move: {
-        drag: true,
-        wheel: true
-    }};
+    grid: {
+        spacing: 30,
+        length: 3,
+        colour: '#eaeaea',
+        snap: true
+    },
+    move: { drag: true, wheel: true },
+    trashcan: true
+};
 
 let currentLanguage = 'en';
 
@@ -48,9 +49,13 @@ function getText(blockName) {
 // Je kan gewoon eentje kopiëren en plakken en dan de naam en de velden aanpassen. Hier kan je documentatie vinden:
 // https://developers.google.com/blockly/guides/create-custom-blocks/overview?hl=en
 
+Blockly.FieldAngle = Blockly.FieldAngle || window.FieldAngle;
+Blockly.FieldColour = Blockly.FieldColour || window.FieldColour;
+
 Blockly.Blocks['start_robot'] = {
     init: function () {
         this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("src/image/test-circle.png", 15, 15, "*"))
             .appendField("start robot");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

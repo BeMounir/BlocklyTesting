@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>WailSalutem AIRoboBlocks</title>
-    <script src="https://unpkg.com/blockly@9.0.0/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly@12.1.0/blockly.min.js"></script>
+    <script src="https://unpkg.com/@blockly/field-angle"></script>
+    <script src="https://unpkg.com/@blockly/field-colour"></script>
+    <script src="https://unpkg.com/@blockly/continuous-toolbox"></script>
+    <script src="https://unpkg.com/@blockly/plugin-scroll-options"></script>
     <link rel="stylesheet" href="src/css/Stylesheet.css">
     <link rel="icon" type="src/image/png" href="src/image/favicon.PNG">
 </head>
@@ -37,7 +41,6 @@
     <div class="right-logo">
         <a href="https://wailsalutem-foundation.com/" target="_blank">
             <img class="roboLogo" src="src/image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
-
         </a>
     </div>
 </header>
@@ -54,80 +57,60 @@
     </div>
 </div>
 
-<div id="mainContainer">
-    <div id="blocklyDiv" class="blocklyDiv"></div>
-    <label for="text"></label><textarea id="text" disabled></textarea>
+<div id="workspaceContainer">
+    <div id="categoryWrapper">
+        <div id="categoryButtons">
+            <button data-category="events" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Events Icon" class="category-icon">
+                <span>Events</span>
+            </button>
+            <button data-category="movement" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Movement Icon" class="category-icon">
+                <span>Movement</span>
+            </button>
+            <button data-category="toon" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Toon Icon" class="category-icon">
+                <span>Toon</span>
+            </button>
+            <button data-category="sound" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Sound Icon" class="category-icon">
+                <span>Sound</span>
+            </button>
+            <button data-category="functions" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Functions Icon" class="category-icon">
+                <span>Functions</span>
+            </button>
+            <button data-category="logic" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Logic Icon" class="category-icon">
+                <span>Logic</span>
+            </button>
+            <button data-category="text" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Text Icon" class="category-icon">
+                <span>Text</span>
+            </button>
+            <button data-category="unsorted" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Unsorted Icon" class="category-icon">
+                <span>Unsorted</span>
+            </button>
+        </div>
+    </div>
+    <div id="blocklyDiv">
+        <div id="buttonDiv">
+            <button id="connectBtn" class="connectBtn">
+                <img src="src/image/connection-icon.png" alt="Connect" class="icon">
+            </button>
+            <button id="runBtn" class="runBtn">
+                <img src="src/image/play-icon2.png" alt="Run" class="icon">
+            </button>
+            <input type="file" id="loadBlocks" accept=".xml" style="display:none"/>
+        </div>
+    </div>
+    <textarea id="text" disabled></textarea>
 </div>
+
 
 <xml id="toolbox" style="display: none">
-    <category name="Events" colour="#FFC500">
-        <block type="start_robot"></block>
-        <block type="stop_robot"></block>
-        <block type="sound_intensity"></block>
-        <block type="camera_detects_object"></block>
-        <block type="camera_gesture"></block>
-        <block type="on_start"></block>
-        <block type="button_pressed"></block>
-        <block type="obstacle_distance"></block>
-        <block type="distance_sensor_less_than"></block>
-    </category>
-    <category name="Movement" colour="#00B180">
-        <block type="robot_forward"></block>
-        <block type="robot_left"></block>
-        <block type="robot_right"></block>
-        <block type="robot_backward"></block>
-        <block type="turn_left"></block>
-        <block type="turn_right"></block>
-        <block type="robot_stop"></block>
-        <block type="wait"></block>
-    </category>
-    <category name="Toon" colour="#686AC1">
-        <block type="activate_led"></block>
-        <block type="activate_all_leds"></block>
-        <block type="deactivate_led"></block>
-        <block type="deactivate_all_leds"></block>
-    </category>
-    <category name="Sound" colour="#FF6680">
-        <block type="microphone_sound"></block>
-        <block type="microphone_ml_label"></block>
-    </category>
-    <category name="Waarnemen" colour="#FF6680">
-
-    </category>
-
-    <category name="Functions" colour="#FF6680">
-        <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
-        <block type="logic_compare"></block>
-        <block type="random_number"></block>
-    </category>
-    <category name="Logic" colour="#FF6680">
-        <block type="controls_if"></block>
-        <block type="controls_whileUntil"></block>
-        <block type="controls_repeat_ext"></block>
-    </category>
-    <category name="Text" colour="#FF6680">
-        <block type="text"></block>
-        <block type="text_print"></block>
-    </category>
-    <category name="Unsorted" colour="#FF6680">
-        <block type="camera_ml_label"></block>
-        <block type="distance_sensor_value"></block>
-        <block type="event_call"></block>
-        <block type="robot_detects"></block>
-        <block type="robot_detects_bottle"></block>
-    </category>
 </xml>
-
-<div id="buttonDiv">
-    <button id="connectBtn" class="connectBtn">
-        <img src="src/image/connection-icon.png" alt="Load" class="icon">
-    </button>
-    <button id="runBtn" class="runBtn">
-        <img src="src/image/play-icon2.png" alt="Load" class="icon">
-    </button>
-    <input type="file" id="loadBlocks" accept=".xml" style="display:none"/>
-</div>
 
 <script src="src/javascript/blockly.js"></script>
 <script src="src/javascript/popup.js"></script>

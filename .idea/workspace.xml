@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="changes">
-      <change afterPath="$PROJECT_DIR$/src/image/connection-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/play-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/play-icon2.png" afterDir="false" />
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="website ui fix">
+      <change afterPath="$PROJECT_DIR$/src/image/test-circle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlocklyTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BlocklyTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/blockly_json.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly_json.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +35,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/javascript/buttons.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -105,7 +110,7 @@
       <workItem from="1763132434927" duration="7949000" />
       <workItem from="1763461298266" duration="6975000" />
       <workItem from="1764073402400" duration="392000" />
-      <workItem from="1764073863443" duration="13212000" />
+      <workItem from="1764073863443" duration="30133000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -233,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1764077358890</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="website ui fix">
+      <created>1764166778700</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1764166778700</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +282,7 @@
     <MESSAGE value="small changes" />
     <MESSAGE value="no spaces in json" />
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="website ui fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="website ui fix" />
   </component>
 </project>
