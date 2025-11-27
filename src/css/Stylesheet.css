@@ -373,43 +373,43 @@ header {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Individual category colors */
 .category-btn[data-category="events"] {
-    background-color: #FF5733; /* red-orange */
+    background-color: #FF5733;
 }
 
 .category-btn[data-category="movement"] {
-    background-color: #33C1FF; /* blue */
+    background-color: #33C1FF;
 }
 
 .category-btn[data-category="toon"] {
-    background-color: #9B59B6; /* purple */
+    background-color: #9B59B6;
 }
 
 .category-btn[data-category="sound"] {
-    background-color: #F1C40F; /* yellow */
+    background-color: #F1C40F;
 }
 
 .category-btn[data-category="functions"] {
-    background-color: #1ABC9C; /* teal */
+    background-color: #1ABC9C;
 }
 
 .category-btn[data-category="logic"] {
-    background-color: #E67E22; /* orange */
+    background-color: #E67E22;
 }
 
 .category-btn[data-category="text"] {
-    background-color: #34495E; /* dark blue-gray */
+    background-color: #34495E;
 }
 
 .category-btn[data-category="unsorted"] {
-    background-color: #95A5A6; /* gray */
+    background-color: #95A5A6;
 }
 
 .category-icon {
     width: 36px;
     height: 36px;
     object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 #categoryWrapper {

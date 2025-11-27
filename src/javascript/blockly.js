@@ -10,8 +10,8 @@ const defaultOptions = {
         controls: true,
         wheel: true,
         startScale: 1.0,
-        maxScale: 3,
-        minScale: 0.3,
+        maxScale: 1.2,
+        minScale: 0.8,
         scaleSpeed: 1.2
     },
     grid: {

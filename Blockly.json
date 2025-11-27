@@ -1,15 +1,7 @@
 {
   "commands": [
     {
-      "action": "cameraGesture",
-      "value": "LEFT"
-    },
-    {
       "action": "start_test"
-    },
-    {
-      "action": "moveLeft",
-      "value": 89
     }
   ]
 }
