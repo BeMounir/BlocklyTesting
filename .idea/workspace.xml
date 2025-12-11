@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="icons verandert">
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="revert">
+      <change afterPath="$PROJECT_DIR$/src/javascript/presets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/popup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +105,9 @@
       <workItem from="1763132434927" duration="7949000" />
       <workItem from="1763461298266" duration="6975000" />
       <workItem from="1764073402400" duration="392000" />
-      <workItem from="1764073863443" duration="32313000" />
+      <workItem from="1764073863443" duration="33437000" />
+      <workItem from="1764373504742" duration="4960000" />
+      <workItem from="1764674393078" duration="652000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -250,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1764257622332</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="revert">
+      <created>1764273925376</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1764273925376</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +303,7 @@
     <MESSAGE value="website ui fix" />
     <MESSAGE value="complete redesign" />
     <MESSAGE value="icons verandert" />
-    <option name="LAST_COMMIT_MESSAGE" value="icons verandert" />
+    <MESSAGE value="revert" />
+    <option name="LAST_COMMIT_MESSAGE" value="revert" />
   </component>
 </project>

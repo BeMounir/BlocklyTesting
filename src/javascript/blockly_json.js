@@ -19,6 +19,8 @@ const blockHandlers = {
     activate_led: b => ({action: "activateLed", pin: parseInt(b.getFieldValue("VALUE")), color: b.getFieldValue("COLOR")}),
     activate_all_leds: b => ({action: "activateAllLeds", color: b.getFieldValue("COLOR")}),
     deactivate_led: b => ({action: "deactivateLed", pin: parseInt(b.getFieldValue("VALUE")),}),
+    distance_sensor_value: b => ({action: "getDistanceSensorValue", op: b.getFieldValue("BUTTON"),
+        value: parseInt(b.getFieldValue("VALUE"))}),
     deactivate_all_leds: () => ({action: "deactivateLed"}),
     obstacle_distance: b => ({
         action: "obstacleDistance",

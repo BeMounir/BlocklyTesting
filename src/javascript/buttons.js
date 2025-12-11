@@ -1,4 +1,19 @@
 let port;
+let workspace;
+
+function loadPreset(xmlString) {
+    if (!xmlString || !workspace) return;
+
+    try {
+        const xmlDom = Blockly.utils.xml.textToDom(xmlString);
+        workspace.clear();
+        Blockly.Xml.domToWorkspace(xmlDom, workspace);
+        console.log("Preset loaded.");
+    } catch (err) {
+        console.error("Error loading preset:", err);
+    }
+}
+
 document.getElementById("connectBtn").onclick = async () => {
     port = await navigator.serial.requestPort();
     await port.open({baudRate: 115200});
@@ -7,7 +22,7 @@ document.getElementById("connectBtn").onclick = async () => {
 
 async function uploadWorkspace(workspace, file) {
     try {
-        const xmlText = await file.text();             // read the file
+        const xmlText = await file.text();
         const xmlDom = Blockly.utils.xml.textToDom(xmlText);
         workspace.clear();
         Blockly.Xml.domToWorkspace(xmlDom, workspace);
@@ -21,9 +36,10 @@ async function uploadWorkspace(workspace, file) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const workspace = Blockly.inject('blocklyDiv', defaultOptions);
+    workspace = Blockly.inject('blocklyDiv', defaultOptions);
     const textArea = document.getElementById('text');
-    let selectedCategory = 'events'; // default category
+
+    let selectedCategory = 'events';
 
     const categories = {
         events: [
@@ -109,7 +125,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // show default category at start
     showCategory(selectedCategory);
 
     document.getElementById("runBtn").addEventListener("click", async () => {
@@ -125,7 +140,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }, 100);
             return;
         }
-        textArea.value = JSON.stringify(jsonData, null, 2) + "\n";
+        textArea.value = JSON.stringify(jsonData, null, 2);
         try {
             const encoder = new TextEncoder();
             const writer = port.writable.getWriter();
@@ -216,5 +231,13 @@ window.addEventListener('DOMContentLoaded', () => {
         const xml = Blockly.Xml.workspaceToDom(workspace);
         workspace.clear();
         Blockly.Xml.domToWorkspace(xml, workspace);
+    });
+});
+
+document.getElementById("presetBtnHeader").addEventListener("click", () => {
+    showPresetPicker((chosenPreset) => {
+        if (chosenPreset === null) return;
+        loadPreset(presetXML[chosenPreset]);
+        showCustomAlert("Voorbeeldprogamma is geladen", "Success");
     });
 });

@@ -331,16 +331,6 @@ Blockly.Blocks['microphone_ml_label'] = {
     }
 };
 
-Blockly.Blocks['distance_sensor_value'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Distance (cm)");
-        this.setOutput(true, "Number");
-        this.setColour(180);
-        this.setTooltip("Returns distance measured by the sensor in cm");
-    }
-};
-
 Blockly.Blocks['distance_sensor_less_than'] = {
     init: function () {
         this.appendDummyInput()
@@ -390,6 +380,22 @@ Blockly.Blocks['obstacle_distance'] = {
             .appendField("cm");
         this.setColour(60);
         this.setNextStatement(true, null);
+        this.setTooltip("True when obstacle distance matches condition");
+    }
+};
+
+Blockly.Blocks['distance_sensor_value'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Obstacle distance")
+            .appendField(new Blockly.FieldDropdown([
+                ["<", "<"],
+                [">", ">"]
+            ]), "BUTTON")
+            .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
+            .appendField("cm");
+        this.setColour(60);
+        this.setOutput(true, "Boolean");
         this.setTooltip("True when obstacle distance matches condition");
     }
 };

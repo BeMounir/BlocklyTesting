@@ -177,10 +177,6 @@ header img {
     background-color: #90baf6;
 }
 
-/* ----------------------------------------
-   POPUP
----------------------------------------- */
-
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -394,3 +390,4 @@ header img {
     object-fit: contain;
     filter: brightness(0) invert(1);
 }
+
