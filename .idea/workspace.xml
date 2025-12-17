@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="revert">
-      <change afterPath="$PROJECT_DIR$/src/javascript/presets.js" afterDir="false" />
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="added distance sensor value and start at voorbeeldprogammas">
+      <change afterPath="$PROJECT_DIR$/src/image/book.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/presets/1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/presets/2.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/blockly_json.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly_json.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/presets.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,29 +47,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/X/IdeaProjects/BlocklyTest/src/image&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15722656&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/X/IdeaProjects/BlocklyTest/src/image/presets",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15722656",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propDebugger",
+    "two.files.diff.last.used.file": "C:/Users/X/IdeaProjects/BlocklyTest/src/image/presets/1.jpeg",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\image\presets" />
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\image" />
       <recent name="C:\Users\X\IdeaProjects\BlocklyTest\src\Image" />
     </key>
@@ -108,6 +114,7 @@
       <workItem from="1764073863443" duration="33437000" />
       <workItem from="1764373504742" duration="4960000" />
       <workItem from="1764674393078" duration="652000" />
+      <workItem from="1765196985700" duration="18240000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -263,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1764273925376</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="added distance sensor value and start at voorbeeldprogammas">
+      <created>1765488872491</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1765488872491</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +318,7 @@
     <MESSAGE value="complete redesign" />
     <MESSAGE value="icons verandert" />
     <MESSAGE value="revert" />
-    <option name="LAST_COMMIT_MESSAGE" value="revert" />
+    <MESSAGE value="added distance sensor value and start at voorbeeldprogammas" />
+    <option name="LAST_COMMIT_MESSAGE" value="added distance sensor value and start at voorbeeldprogammas" />
   </component>
 </project>

@@ -96,7 +96,8 @@ window.addEventListener('DOMContentLoaded', () => {
             'distance_sensor_value',
             'event_call',
             'robot_detects',
-            'robot_detects_bottle'
+            'robot_detects_bottle',
+            'camera_watch'
         ]
     };
 
@@ -237,7 +238,8 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById("presetBtnHeader").addEventListener("click", () => {
     showPresetPicker((chosenPreset) => {
         if (chosenPreset === null) return;
-        loadPreset(presetXML[chosenPreset]);
+        const preset = presets.find(p => p.id === chosenPreset);
+        if (preset) loadPreset(preset.xml);
         showCustomAlert("Voorbeeldprogamma is geladen", "Success");
     });
 });

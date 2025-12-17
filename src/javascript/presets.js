@@ -1,5 +1,9 @@
-const presetXML = {
-    1: `
+const presets = [
+    {
+        id: 1,
+        name: "Hand Gesture",
+        tags: ["ai"],
+        xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
   <block type="controls_repeat_ext" x="20" y="20">
     <value name="TIMES">
@@ -9,22 +13,34 @@ const presetXML = {
     </value>
   </block>
 </xml>
-`,
-    2: `
+    `,
+        image: "src/image/presets/1.jpeg"
+    },
+    {
+        id: 2,
+        name: "Obstacle Avoidance",
+        tags: ["sensors", "navigation"],
+        xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="start_robot" id="np.Kl,,rV@%(L3)HXqpS" x="-195" y="-75">
+  <block type="start_robot" x="-195" y="-75">
     <next>
-      <block type="wait" id=":9]X*ZY##~G\`aWg8bfe0">
+      <block type="wait">
         <field name="VALUE">5</field>
         <next>
-          <block type="stop_robot" id="uB2/kH9z~y|n.utx6)ok"></block>
+          <block type="stop_robot"></block>
         </next>
       </block>
     </next>
   </block>
 </xml>
-`,
-    3: `
+    `,
+        image: "src/image/presets/2.jpeg"
+    },
+    {
+        id: 3,
+        name: "Line Follower",
+        tags: ["navigation"],
+        xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
   <block type="text_print" x="80" y="80">
     <value name="TEXT">
@@ -34,8 +50,14 @@ const presetXML = {
     </value>
   </block>
 </xml>
-`,
-    4: `
+    `,
+        image: "src/image/presets/2.jpeg"
+    },
+    {
+        id: 4,
+        name: "Bottle Detection",
+        tags: ["ai", "camera"],
+        xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
   <block type="start_robot" id="vL-l$@UStk(a6HjIEx!+" x="-195" y="-285">
     <next>
@@ -120,5 +142,42 @@ const presetXML = {
     </next>
   </block>
 </xml>
-`
-};
+    `,
+        image: "src/image/presets/2.jpeg"
+    },
+    {
+        id: 5,
+        name: "Preset 5",
+        tags: ["basic"],
+        xml: `
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="text_print" x="80" y="80">
+    <value name="TEXT">
+      <shadow type="text">
+        <field name="TEXT">test</field>
+      </shadow>
+    </value>
+  </block>
+</xml>
+    `,
+        image: "src/image/presets/2.jpeg"
+    },
+    {
+        id: 6,
+        name: "Preset 6",
+        tags: ["basic"],
+        xml: `
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="text_print" x="80" y="80">
+    <value name="TEXT">
+      <shadow type="text">
+        <field name="TEXT">test</field>
+      </shadow>
+    </value>
+  </block>
+</xml>
+    `,
+        image: "src/image/presets/2.jpeg"
+    },
+];
+

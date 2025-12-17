@@ -1,6 +1,6 @@
 function resetPopup() {
     const overlay = document.getElementById('popupOverlay');
-    const popupBox = overlay.querySelector('*');
+    const popupBox = overlay.querySelector('.popup');
     const input = document.getElementById('popupInput');
     const okBtn = document.getElementById('popupOk');
     const cancelBtn = document.getElementById('popupCancel');
@@ -8,142 +8,160 @@ function resetPopup() {
     const msg = document.getElementById('popupMessage');
 
     overlay.style.display = 'flex';
-    input.style.display = 'block';
-    cancelBtn.style.display = 'inline-block';
     input.value = '';
     titleEl.textContent = '';
     msg.textContent = '';
 
-    if (popupBox) {
-        popupBox.style.maxWidth = '';
-    } else {
-        console.error("Popup Box element not found inside the overlay!");
-    }
-    overlay.querySelectorAll('.preset-container').forEach(el => el.remove());
+    popupBox?.classList.remove('preset-popup');
+
+    overlay.querySelectorAll('.preset-container, .filter-bar').forEach(e => e.remove());
 
     const newOk = okBtn.cloneNode(true);
     const newCancel = cancelBtn.cloneNode(true);
     okBtn.parentNode.replaceChild(newOk, okBtn);
     cancelBtn.parentNode.replaceChild(newCancel, cancelBtn);
 
-    return { overlay, popupBox, input, okBtn: newOk, cancelBtn: newCancel, titleEl, msg };
+    return {overlay, popupBox, input, okBtn: newOk, cancelBtn: newCancel, titleEl, msg};
 }
 
 function showCustomPrompt(message, defaultValue = '', title = "Opslaan", callback) {
-    const { overlay, input, okBtn, cancelBtn, titleEl, msg } = resetPopup();
+    const {overlay, input, okBtn, cancelBtn, titleEl, msg, popupBox} = resetPopup();
+
+    popupBox.classList.remove('preset-popup');
 
     titleEl.textContent = title;
     msg.textContent = message;
+
+    input.style.display = 'block';
     input.value = defaultValue;
     input.focus();
 
-    okBtn.addEventListener('click', () => {
+    okBtn.style.display = 'inline-block';
+    cancelBtn.style.display = 'inline-block';
+
+    okBtn.textContent = 'OK';
+    cancelBtn.textContent = 'Cancel';
+
+    okBtn.onclick = () => {
         overlay.style.display = 'none';
         callback(input.value.trim() || null);
-    });
-
-    cancelBtn.addEventListener('click', () => {
+    };
+    cancelBtn.onclick = () => {
         overlay.style.display = 'none';
         callback(null);
-    });
+    };
 }
 
 function showCustomAlert(message, title = "Bericht") {
-    const { overlay, input, okBtn, cancelBtn, titleEl, msg } = resetPopup();
+    const {overlay, okBtn, cancelBtn, titleEl, msg, popupBox, input} = resetPopup();
 
-    input.style.display = 'none';
-    cancelBtn.style.display = 'none';
+    popupBox.classList.remove('preset-popup');
+
     titleEl.textContent = title;
     msg.textContent = message;
 
-    okBtn.addEventListener('click', () => {
-        overlay.style.display = 'none';
-    });
+    input.style.display = 'none';
+    okBtn.style.display = 'inline-block';
+    cancelBtn.style.display = 'none';
+
+    okBtn.textContent = 'OK';
+
+    okBtn.onclick = () => overlay.style.display = 'none';
 }
 
 function showCustomConfirm(message, callback, title = "Bevestigen") {
-    const { overlay, input, okBtn, cancelBtn, titleEl, msg } = resetPopup();
+    const {overlay, okBtn, cancelBtn, titleEl, msg, popupBox, input} = resetPopup();
 
-    input.style.display = 'none';
+    popupBox.classList.remove('preset-popup');
+
     titleEl.textContent = title;
     msg.textContent = message;
 
-    okBtn.addEventListener('click', () => {
+    input.style.display = 'none';
+    okBtn.style.display = 'inline-block';
+    cancelBtn.style.display = 'inline-block';
+
+    okBtn.textContent = 'OK';
+    cancelBtn.textContent = 'Cancel';
+
+
+    okBtn.onclick = () => {
         overlay.style.display = 'none';
         callback(true);
-    });
-
-    cancelBtn.addEventListener('click', () => {
+    };
+    cancelBtn.onclick = () => {
         overlay.style.display = 'none';
         callback(false);
-    });
+    };
 }
 
 function showPresetPicker(presetCallback, title = "Kies een voorbeeldprogamma.") {
-    const { overlay, popupBox, input, okBtn, cancelBtn, titleEl, msg } = resetPopup();
-
-    popupBox.style.maxWidth = '900px';
-    input.style.display = "none";
+    const { overlay, popupBox, input, cancelBtn, titleEl, msg } = resetPopup();
+    popupBox.classList.add('preset-popup');
+    input.style.display = 'none';
     titleEl.textContent = title;
     msg.textContent = "Kies één van de volgende voorbeeldprogamma's:";
 
-    let presetContainer = overlay.querySelector(".preset-container");
-    if (!presetContainer) {
-        presetContainer = document.createElement("div");
-        presetContainer.className = "preset-container";
+    cancelBtn.style.display = 'inline-block';
+    cancelBtn.textContent = 'Close';
+    cancelBtn.onclick = () => {
+        overlay.style.display = 'none';
+        presetCallback(null);
+    };
 
-        presetContainer.style.display = "flex";
-        presetContainer.style.flexWrap = "wrap";
-        presetContainer.style.gap = "12px";
-        presetContainer.style.marginTop = "15px";
-        presetContainer.style.justifyContent = "center";
+    const filterBar = document.createElement('div');
+    filterBar.className = 'filter-bar';
+    msg.insertAdjacentElement('afterend', filterBar);
 
-        msg.insertAdjacentElement("afterend", presetContainer);
-    } else {
-        presetContainer.innerHTML = "";
+    const presetContainer = document.createElement('div');
+    presetContainer.className = 'preset-container';
+    filterBar.insertAdjacentElement('afterend', presetContainer);
+
+    let activeFilter = 'all';
+    const tags = ['all', ...new Set(presets.flatMap(p => p.tags))];
+
+    tags.forEach(tag => {
+        const btn = document.createElement('button');
+        btn.textContent = tag.toUpperCase();
+        btn.dataset.tag = tag;
+        if (tag === 'all') btn.classList.add('active');
+        btn.onclick = () => {
+            activeFilter = tag;
+            filterBar.querySelectorAll('button').forEach(b =>
+                b.classList.toggle('active', b.dataset.tag === tag)
+            );
+            renderPresets();
+        };
+        filterBar.appendChild(btn);
+    });
+
+    function renderPresets() {
+        presetContainer.innerHTML = '';
+        presets
+            .filter(p => activeFilter === 'all' || p.tags.includes(activeFilter))
+            .forEach(p => {
+                const btn = document.createElement('button');
+                btn.className = 'preset-btn';
+
+                const img = document.createElement('div');
+                img.className = 'preset-image';
+                img.style.backgroundImage = `url(src/image/presets/${p.id}.jpeg)`;
+
+                const name = document.createElement('div');
+                name.className = 'preset-name';
+                name.textContent = p.name;
+
+                btn.appendChild(img);
+                btn.appendChild(name);
+
+                btn.onclick = () => {
+                    overlay.style.display = 'none';
+                    presetCallback(p.id);
+                };
+
+                presetContainer.appendChild(btn);
+            });
     }
 
-    const presets = [
-        { id: 1, name: "Preset 1" },
-        { id: 2, name: "Preset 2" },
-        { id: 3, name: "Preset 3" },
-        { id: 4, name: "Preset 4" },
-        { id: 5, name: "Preset 5" },
-    ];
-
-    presets.forEach(p => {
-        const btn = document.createElement("button");
-        btn.textContent = p.name;
-
-        btn.style.width = "100px";
-        btn.style.height = "100px";
-        btn.style.display = "flex";
-        btn.style.alignItems = "center";
-        btn.style.justifyContent = "center";
-        btn.style.fontSize = "16px";
-        btn.style.border = "1px solid #555";
-        btn.style.background = "#2b2b2b";
-        btn.style.color = "white";
-        btn.style.borderRadius = "8px";
-        btn.style.cursor = "pointer";
-        btn.style.transition = "0.2s";
-        btn.onmouseenter = () => btn.style.background = "#444";
-        btn.onmouseleave = () => btn.style.background = "#2b2b2b";
-
-        btn.addEventListener("click", () => {
-            overlay.style.display = "none";
-            presetCallback(p.id);
-        });
-
-        presetContainer.appendChild(btn);
-    });
-
-    const newCancel = cancelBtn.cloneNode(true);
-    cancelBtn.parentNode.replaceChild(newCancel, cancelBtn);
-    newCancel.addEventListener("click", () => {
-        overlay.style.display = "none";
-        presetCallback(null);
-    });
-
-    okBtn.style.display = "inline-block";
+    renderPresets();
 }

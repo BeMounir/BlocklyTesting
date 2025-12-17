@@ -36,19 +36,49 @@ const blockHandlers = {
     text: b => ({type: "text", value: b.getFieldValue("TEXT")}),
 
     controls_if: b => {
-        const conditionBlock = b.getInputTargetBlock("IF0");
-        const condition = blockToJson(conditionBlock);
+        // Helper to collect commands from a DO input
+        const collectCommands = (inputName) => {
+            const commands = [];
+            let current = b.getInputTargetBlock(inputName);
+            while (current) {
+                const cmd = blockToJson(current);
+                if (cmd) commands.push(cmd);
+                current = current.getNextBlock();
+            }
+            return commands;
+        };
 
-        const doBlock = b.getInputTargetBlock("DO0");
-        const commands = [];
-        let current = doBlock;
-        while (current) {
-            const cmd = blockToJson(current);
-            if (cmd) commands.push(cmd);
-            current = current.getNextBlock();
+        // Build the root IF
+        const rootIf = {
+            type: "if",
+            condition: blockToJson(b.getInputTargetBlock("IF0")),
+            commands: collectCommands("DO0")
+        };
+
+        let currentIf = rootIf;
+        let i = 1;
+
+        while (b.getInput("IF" + i)) {
+            const nextIf = {
+                type: "if",
+                condition: blockToJson(b.getInputTargetBlock("IF" + i)),
+                commands: collectCommands("DO" + i)
+            };
+
+            currentIf.else = nextIf;
+            currentIf = nextIf;
+            i++;
         }
-        return {type: "if", condition, commands};
+
+        if (b.getInput("ELSE")) {
+            currentIf.else = {
+                commands: collectCommands("ELSE")
+            };
+        }
+
+        return rootIf;
     },
+
 
     controls_repeat_ext: b => {
         const timesBlock = b.getInputTargetBlock("TIMES");

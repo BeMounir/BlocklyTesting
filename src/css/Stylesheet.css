@@ -32,6 +32,7 @@ h1 {
 }
 
 .blocklyFlyout {
+    padding-top: 20px;
     position: relative;
     fill: #f0f4ff;
     border-radius: 0;
@@ -63,18 +64,18 @@ button {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
     background-color: #2c5282;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 900px) {
@@ -97,7 +98,7 @@ header {
     color: white;
     padding: 0 20px;
     height: 80px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 header .logo img,
@@ -166,6 +167,12 @@ header img {
     filter: brightness(0) invert(1);
 }
 
+.header-center .icon,
+.workshopButton .icon {
+    transform: translateY(3px);
+}
+
+
 #inputHeader {
     text-align: center;
     border: none;
@@ -183,7 +190,7 @@ header img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     display: none;
     justify-content: center;
     align-items: center;
@@ -194,7 +201,7 @@ header img {
     background: white;
     padding: 20px 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 300px;
 }
@@ -243,8 +250,9 @@ header img {
     background-color: white;
     padding: 15px;
     border-radius: 12px 0 0 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
@@ -263,6 +271,8 @@ header img {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    overflow-y: auto;
+    padding-right: 6px;
 }
 
 .category-btn {
@@ -284,17 +294,40 @@ header img {
 
 .category-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.category-btn[data-category="events"] { background-color: #FF5733; }
-.category-btn[data-category="movement"] { background-color: #33C1FF; }
-.category-btn[data-category="toon"] { background-color: #9B59B6; }
-.category-btn[data-category="sound"] { background-color: #F1C40F; }
-.category-btn[data-category="functions"] { background-color: #1ABC9C; }
-.category-btn[data-category="logic"] { background-color: #E67E22; }
-.category-btn[data-category="text"] { background-color: #34495E; }
-.category-btn[data-category="unsorted"] { background-color: #95A5A6; }
+.category-btn[data-category="events"] {
+    background-color: #FF5733;
+}
+
+.category-btn[data-category="movement"] {
+    background-color: #33C1FF;
+}
+
+.category-btn[data-category="toon"] {
+    background-color: #9B59B6;
+}
+
+.category-btn[data-category="sound"] {
+    background-color: #F1C40F;
+}
+
+.category-btn[data-category="functions"] {
+    background-color: #1ABC9C;
+}
+
+.category-btn[data-category="logic"] {
+    background-color: #E67E22;
+}
+
+.category-btn[data-category="text"] {
+    background-color: #34495E;
+}
+
+.category-btn[data-category="unsorted"] {
+    background-color: #95A5A6;
+}
 
 .category-icon {
     width: 36px;
@@ -358,7 +391,7 @@ header img {
     border-radius: 50%;
     font-size: 28px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background 0.2s, transform 0.1s;
 }
 
@@ -391,3 +424,116 @@ header img {
     filter: brightness(0) invert(1);
 }
 
+.popup {
+    width: 400px;
+    max-width: 90vw;
+    padding: 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+.popup.preset-popup {
+    width: 900px;
+    max-width: 95vw;
+    padding: 32px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup.preset-popup > .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    justify-content: center;
+}
+
+.popup.preset-popup > .filter-bar button {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid #555;
+    background: #2b2b2b;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.popup.preset-popup > .filter-bar button.active {
+    background: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.popup.preset-popup > .preset-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    justify-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    width: 100%;
+    max-height: 296px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.popup.preset-popup > .preset-container .preset-btn {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background: #1f2937;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup.preset-popup > .preset-container .preset-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.popup.preset-popup > .preset-container .preset-image {
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+}
+
+.popup.preset-popup > .preset-container .preset-name {
+    height: 20%;
+    background: rgba(84, 129, 183, 0.65);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.popup.preset-popup > .preset-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.popup.preset-popup > .preset-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+
+.popup.preset-popup > .preset-container::-webkit-scrollbar-track {
+    background: transparent;
+}
