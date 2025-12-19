@@ -16,5 +16,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="blockly" level="application" />
     <orderEntry type="library" name="@blockly" level="application" />
+    <orderEntry type="library" name="i18next" level="application" />
+    <orderEntry type="library" name="i18next-browser-languagedetector" level="application" />
   </component>
 </module>

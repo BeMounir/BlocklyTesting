@@ -1,10 +1,15 @@
 {
   "commands": [
     {
-      "action": "start_test"
+      "action": "moveForward",
+      "value": 10
     },
     {
-      "action": "stop_test"
+      "type": "print",
+      "value": {
+        "type": "text",
+        "value": "test"
+      }
     }
   ]
 }

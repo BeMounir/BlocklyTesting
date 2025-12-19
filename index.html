@@ -8,6 +8,8 @@
     <script src="https://unpkg.com/@blockly/field-colour"></script>
     <script src="https://unpkg.com/@blockly/continuous-toolbox"></script>
     <script src="https://unpkg.com/@blockly/plugin-scroll-options"></script>
+    <script src="https://unpkg.com/i18next@23.4.5/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@7.0.1/i18nextBrowserLanguageDetector.min.js"></script>
     <link rel="stylesheet" href="src/css/Stylesheet.css">
     <link rel="icon" type="src/image/png" href="src/image/favicon.PNG">
 </head>
@@ -16,46 +18,46 @@
 <header>
     <div class="left-logo">
         <a href="https://wailsalutem-foundation.com/" target="_blank">
-        <img class="wailsalutemLogo" src="src/image/logo.png" alt="WAIL Salutem Logo">
-            </a>
+            <img class="wailsalutemLogo" src="src/image/logo.png" alt="WAIL Salutem Logo">
+        </a>
     </div>
 
     <div class="header-center">
         <a class="workshopButton" style="text-decoration:none" href="https://workshoptest.wailsalutem-foundation.com/">
-            <img src="src/image/back.png" alt="Load" class="icon">Workshop
+            <img src="src/image/back.png" alt="Load" class="icon"><span data-i18n="Workshop">Workshop</span>
         </a>
         <select id="languageSelect">
             <option value="en">English</option>
             <option value="nl">Nederlands</option>
         </select>
         <button id="newBtnHeader" title="Nieuw Project">
-            <img src="src/image/folder2.png" alt="Load" class="icon"> Nieuw Project
+            <img src="src/image/folder2.png" alt="Load" class="icon"><span data-i18n="New Project">Nieuw Project</span>
         </button>
         <button id="loadBlocksHeader" title="Project Laden">
-            <img src="src/image/load-icon.png" alt="Load" class="icon"> Laden
+            <img src="src/image/load-icon.png" alt="Load" class="icon"><span data-i18n="Load">Laden</span>
         </button>
         <button id="saveBlocksHeader" title="Project Opslaan">
-            <img src="src/image/save-icon.png" alt="Save" class="icon"> Opslaan
+            <img src="src/image/save-icon.png" alt="Save" class="icon"><span data-i18n="Save">Opslaan</span>
         </button>
-        <input id="inputHeader" placeholder="MyProject">
+        <input id="inputHeader" placeholder="MyProject" data-i18n-placeholder="Project_Name">
         <button id="presetBtnHeader" title="Presets">
-            <img src="src/image/book.png" alt="Presets" class="icon"> Voorbeeldprogamma's
+            <img src="src/image/book.png" alt="Presets" class="icon"><span data-i18n="Presets">Voorbeeldprogamma's</span>
         </button>
     </div>
 
     <div class="right-logo">
-            <img class="roboLogo" src="src/image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
+        <img class="roboLogo" src="src/image/AIRoboBlocks%20logo%20Transparant.webp" alt="AIRoboBlocks Logo">
     </div>
 </header>
 
 <div id="popupOverlay" class="popup-overlay">
     <div class="popup">
-        <h2 id="popupTitle">Opslaan</h2>
-        <p id="popupMessage">Voer een projectnaam in:</p>
-        <input type="text" id="popupInput" placeholder="MijnProject"/>
+        <h2 id="popupTitle" data-i18n="Popup_Title">Opslaan</h2>
+        <p id="popupMessage" data-i18n="Popup_Message">Voer een projectnaam in:</p>
+        <input type="text" id="popupInput" placeholder="MijnProject" data-i18n-placeholder="Project_Name"/>
         <div class="popup-buttons">
-            <button id="popupOk">OK</button>
-            <button id="popupCancel">Annuleren</button>
+            <button id="popupOk" data-i18n="OK">OK</button>
+            <button id="popupCancel" data-i18n="Cancel">Annuleren</button>
         </div>
     </div>
 </div>
@@ -65,44 +67,48 @@
         <div id="categoryButtons">
             <button data-category="events" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Events Icon" class="category-icon">
-                <span>Events</span>
+                <span data-i18n="Events">Events</span>
             </button>
             <button data-category="movement" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Movement Icon" class="category-icon">
-                <span>Movement</span>
+                <span data-i18n="Movement">Movement</span>
             </button>
             <button data-category="toon" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Toon Icon" class="category-icon">
-                <span>Toon</span>
+                <span data-i18n="Toon">Toon</span>
             </button>
             <button data-category="sound" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Sound Icon" class="category-icon">
-                <span>Sound</span>
+                <span data-i18n="Sound">Sound</span>
             </button>
             <button data-category="functions" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Functions Icon" class="category-icon">
-                <span>Functions</span>
+                <span data-i18n="Functions">Functions</span>
             </button>
             <button data-category="logic" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Logic Icon" class="category-icon">
-                <span>Logic</span>
+                <span data-i18n="Logic">Logic</span>
             </button>
             <button data-category="text" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Text Icon" class="category-icon">
-                <span>Text</span>
+                <span data-i18n="Text">Text</span>
+            </button>
+            <button data-category="variables" class="category-btn">
+                <img src="src/image/test-circle.png" alt="Variables Icon" class="category-icon">
+                <span data-i18n="Variables">Variables</span>
             </button>
             <button data-category="unsorted" class="category-btn">
                 <img src="src/image/test-circle.png" alt="Unsorted Icon" class="category-icon">
-                <span>Unsorted</span>
+                <span data-i18n="Unsorted">Unsorted</span>
             </button>
         </div>
     </div>
     <div id="blocklyDiv">
         <div id="buttonDiv">
-            <button id="connectBtn" class="connectBtn">
+            <button id="connectBtn" class="connectBtn" title="Connect">
                 <img src="src/image/connection-icon.png" alt="Connect" class="icon">
             </button>
-            <button id="runBtn" class="runBtn">
+            <button id="runBtn" class="runBtn" title="Run">
                 <img src="src/image/play-icon2.png" alt="Run" class="icon">
             </button>
             <input type="file" id="loadBlocks" accept=".xml" style="display:none"/>
@@ -119,6 +125,7 @@
 <script src="src/javascript/popup.js"></script>
 <script src="src/javascript/blockly_json.js"></script>
 <script src="src/javascript/buttons.js"></script>
+<script src="src/javascript/translates.js"></script>
 
 </body>
 </html>

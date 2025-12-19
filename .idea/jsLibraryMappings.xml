@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{@blockly}" />
+    <file url="file://$PROJECT_DIR$" libraries="{@blockly, i18next, i18next-browser-languagedetector}" />
     <file url="PROJECT" libraries="{blockly}" />
   </component>
 </project>

@@ -70,8 +70,6 @@ window.addEventListener('DOMContentLoaded', () => {
             'deactivate_all_leds'
         ],
         sound: [
-            'microphone_sound',
-            'microphone_ml_label'
         ],
         waarnemen: [
             // empty
@@ -94,11 +92,11 @@ window.addEventListener('DOMContentLoaded', () => {
         unsorted: [
             'camera_ml_label',
             'distance_sensor_value',
-            'event_call',
             'robot_detects',
             'robot_detects_bottle',
             'camera_watch'
-        ]
+        ],
+        variables: 'VARIABLE',
     };
 
     const flyout = workspace.getFlyout();
@@ -110,6 +108,31 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function showCategory(categoryName) {
         const blockTypes = categories[categoryName] || [];
+
+        if (categoryName === 'variables') {
+            const variableBlocks = [];
+
+            const xmlCreate = Blockly.utils.xml.createElement('button');
+            xmlCreate.setAttribute('text', 'Make a variable...');
+            xmlCreate.setAttribute('callbackKey', 'CREATE_VARIABLE');
+            variableBlocks.push(xmlCreate);
+
+            const xmlSet = Blockly.utils.xml.createElement('block');
+            xmlSet.setAttribute('type', 'variables_set');
+            variableBlocks.push(xmlSet);
+
+            const xmlGet = Blockly.utils.xml.createElement('block');
+            xmlGet.setAttribute('type', 'variables_get');
+            variableBlocks.push(xmlGet);
+
+            workspace.registerButtonCallback('CREATE_VARIABLE', () => {
+                Blockly.Variables.createVariable(workspace);
+            });
+
+            flyout.show(variableBlocks);
+            return;
+        }
+
         const xmlArray = blockTypes.map(type => {
             const xml = Blockly.utils.xml.createElement('block');
             xml.setAttribute('type', type);
@@ -118,6 +141,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         flyout.show(xmlArray);
     }
+
+
 
     document.querySelectorAll('#categoryButtons button').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -232,7 +257,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const xml = Blockly.Xml.workspaceToDom(workspace);
         workspace.clear();
         Blockly.Xml.domToWorkspace(xml, workspace);
+
+        showCategory(selectedCategory);
     });
+
 });
 
 document.getElementById("presetBtnHeader").addEventListener("click", () => {

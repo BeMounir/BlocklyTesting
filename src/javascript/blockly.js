@@ -24,27 +24,6 @@ const defaultOptions = {
     trashcan: true
 };
 
-let currentLanguage = 'en';
-
-const translations = {
-    en: {
-        robot_forward: "Move Forward ",
-        robot_forward_tooltip: "Move the robot forward",
-        robot_stop: "Stop Moving",
-        robot_stop_tooltip: "Stop the robot",
-    },
-    nl: {
-        robot_forward: "Ga Vooruit",
-        robot_forward_tooltip: "Laat de robot vooruit bewegen",
-        robot_stop: "Stoppen",
-        robot_stop_tooltip: "Laat de robot stoppen",
-    }
-};
-
-function getText(blockName) {
-    return translations[currentLanguage][blockName] || blockName;
-}
-
 // Dit zijn de custom blocks voor de robot. Je kan hier meer blocks toevoegen als je wilt.
 // Je kan gewoon eentje kopiëren en plakken en dan de naam en de velden aanpassen. Hier kan je documentatie vinden:
 // https://developers.google.com/blockly/guides/create-custom-blocks/overview?hl=en
@@ -52,26 +31,30 @@ function getText(blockName) {
 Blockly.FieldAngle = Blockly.FieldAngle || window.FieldAngle;
 Blockly.FieldColour = Blockly.FieldColour || window.FieldColour;
 
+function getText(blockName) {
+    return translations[currentLanguage][blockName] || blockName;
+}
+
 Blockly.Blocks['start_robot'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("src/image/test-circle.png", 15, 15, "*"))
-            .appendField("start robot");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(160);
-        this.setTooltip(getText("robot_forward_tooltip"));
+            .appendField(getText("start_robot"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour("#FF5733");
+        this.setTooltip(getText("start_robot_tooltip"));
     }
 };
 
 Blockly.Blocks['stop_robot'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("stop robot");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(160);
-        this.setTooltip(getText("robot_forward_tooltip"));
+            .appendField(getText("stop_robot"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour("#FF5733");
+        this.setTooltip(getText("stop_robot_tooltip"));
     }
 };
 
@@ -81,8 +64,8 @@ Blockly.Blocks['robot_forward'] = {
             .appendField(getText("robot_forward"))
             .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
         this.setTooltip(getText("robot_forward_tooltip"));
     }
@@ -91,353 +74,292 @@ Blockly.Blocks['robot_forward'] = {
 Blockly.Blocks['robot_left'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Move Left ")
+            .appendField(getText("robot_left"))
             .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Move the robot left");
+        this.setTooltip(getText("robot_left_tooltip"));
     }
 };
 
 Blockly.Blocks['robot_right'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Move Right ")
+            .appendField(getText("robot_right"))
             .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Move the robot right");
+        this.setTooltip(getText("robot_right_tooltip"));
     }
 };
 
 Blockly.Blocks['robot_backward'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Move Backward ")
+            .appendField(getText("robot_backward"))
             .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Move the robot backward");
+        this.setTooltip(getText("robot_backward_tooltip"));
     }
 };
 
 Blockly.Blocks['robot_stop'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Stop Moving ");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("robot_stop"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Stop the robot");
-    }
-};
-
-Blockly.Blocks['event_call'] = {
-    init: function () {
-        this.appendValueInput("COND")
-            .setCheck("Boolean")
-            .appendField("If Robot");
-        this.appendStatementInput("DO")
-            .appendField("do");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(230);
-        this.setTooltip("Event handler block");
+        this.setTooltip(getText("robot_stop_tooltip"));
     }
 };
 
 Blockly.Blocks['robot_detects'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Robot detects obstacle");
+            .appendField(getText("robot_detects"));
         this.setOutput(true, "Boolean");
         this.setColour(50);
-        this.setTooltip("Returns true if the robot detects an obstacle");
+        this.setTooltip(getText("robot_detects_tooltip"));
     }
 };
 
 Blockly.Blocks['robot_detects_bottle'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Robot detects bottle");
+            .appendField(getText("robot_detects_bottle"));
         this.setOutput(true, "Boolean");
         this.setColour(50);
-        this.setTooltip("Returns true if the robot detects a bottle");
+        this.setTooltip(getText("robot_detects_bottle_tooltip"));
     }
 };
 
 Blockly.Blocks['wait'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Wait ")
+            .appendField(getText("wait"))
             .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
-            .appendField("Seconds ");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("seconds"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Wait for specified seconds");
+        this.setTooltip(getText("wait_tooltip"));
     }
 };
 
 Blockly.Blocks['turn_left'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Turn Left ")
+            .appendField(getText("turn_left"))
             .appendField(new Blockly.FieldAngle(90), "ANGLE")
-            .appendField("degrees");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("degrees"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Turn the robot left by specified degrees");
+        this.setTooltip(getText("turn_left_tooltip"));
     }
 };
 
 Blockly.Blocks['turn_right'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Turn Right ")
+            .appendField(getText("turn_right"))
             .appendField(new Blockly.FieldAngle(90), "ANGLE")
-            .appendField("degrees");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("degrees"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#33C1FF");
-        this.setTooltip("Turn the robot right by specified degrees");
+        this.setTooltip(getText("turn_right_tooltip"));
     }
-}
+};
 
 Blockly.Blocks['activate_led'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Stel LED ")
+            .appendField(getText("activate_led"))
             .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
-            .appendField("op kleur ")
-            .appendField(new Blockly.FieldColour("#ff0000"), "COLOR")
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("color"))
+            .appendField(new Blockly.FieldColour("#ff0000"), "COLOR");
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#9B59B6");
-        this.setTooltip("Activate a specific led");
+        this.setTooltip(getText("activate_led_tooltip"));
     }
-}
+};
 
 Blockly.Blocks['activate_all_leds'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Stel alle LEDS op kleur ")
-            .appendField(new Blockly.FieldColour("#ff0000"), "COLOR")
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("activate_all_leds"))
+            .appendField(new Blockly.FieldColour("#ff0000"), "COLOR");
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#9B59B6");
-        this.setTooltip("Activate all leds");
+        this.setTooltip(getText("activate_all_leds_tooltip"));
     }
-}
+};
 
 Blockly.Blocks['deactivate_led'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Zet LED ")
-            .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
-            .appendField("uit ")
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("deactivate_led"))
+            .appendField(new Blockly.FieldNumber(1, 0), "VALUE");
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#9B59B6");
-        this.setTooltip("Deactivate a specific led");
+        this.setTooltip(getText("deactivate_led_tooltip"));
     }
-}
+};
 
 Blockly.Blocks['deactivate_all_leds'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Zet alle LEDs uit")
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
+            .appendField(getText("deactivate_all_leds"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
         this.setColour("#9B59B6");
-        this.setTooltip("Deactivate all LEDS");
+        this.setTooltip(getText("deactivate_all_leds_tooltip"));
     }
-}
+};
 
 Blockly.Blocks['camera_detects_object'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When camera detects")
-            .appendField(new Blockly.FieldTextInput("object"), "OBJECT");
-        this.setNextStatement(true, null);
+            .appendField(getText("camera_detects_object"))
+            .appendField(new Blockly.FieldTextInput(getText("object")), "OBJECT");
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setTooltip("Triggered when the camera sees the specified object");
+        this.setTooltip(getText("camera_detects_object_tooltip"));
     }
 };
 
 Blockly.Blocks['camera_gesture'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When hand camera gesture =")
+            .appendField(getText("camera_gesture"))
             .appendField(new Blockly.FieldDropdown([
-                ["Up", "UP"],
-                ["Left", "LEFT"],
-                ["Right", "RIGHT"]
+                [getText("up"), "UP"],
+                [getText("left"), "LEFT"],
+                [getText("right"), "RIGHT"]
             ]), "GESTURE");
-        this.setNextStatement(true, null);
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setTooltip("Triggered when camera detects a specific gesture");
+        this.setTooltip(getText("camera_gesture_tooltip"));
     }
 };
 
 Blockly.Blocks['camera_ml_label'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Camera last ML label");
+            .appendField(getText("camera_ml_label"));
         this.setOutput(true, "String");
         this.setColour(120);
-        this.setTooltip("Returns the last label predicted by the camera ML model");
-    }
-};
-
-Blockly.Blocks['microphone_sound'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("When sound =")
-            .appendField(new Blockly.FieldDropdown([
-                ["Yes", "YES"],
-                ["No", "NO"],
-                ["Up", "UP"],
-                ["Down", "DOWN"],
-                ["Left", "LEFT"],
-                ["Right", "RIGHT"],
-                ["On", "ON"],
-                ["Off", "OFF"],
-                ["Stop", "STOP"],
-                ["Go", "GO"],
-                ["Silence", "SILENCE"],
-                ["Unknown", "UNKNOWN"]
-            ]), "SPEECH_DETECTION");
-        this.setNextStatement(true, null);
-        this.setColour(60);
-        this.setTooltip("Triggered when the microphone detects a specific keyword");
-    }
-};
-
-Blockly.Blocks['microphone_ml_label'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Microphone last ML label ");
-        this.setOutput(true, "String");
-        this.setColour(60);
-        this.setTooltip("Returns the last label predicted by the audio ML model");
+        this.setTooltip(getText("camera_ml_label_tooltip"));
     }
 };
 
 Blockly.Blocks['distance_sensor_less_than'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When distance <")
+            .appendField(getText("distance_sensor_less_than"))
             .appendField(new Blockly.FieldNumber(10, 0), "VALUE")
             .appendField("cm");
-        this.setNextStatement(true, null);
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setTooltip("Triggered when the distance sensor reads less than the specified value");
+        this.setTooltip(getText("distance_sensor_less_than_tooltip"));
     }
 };
 
 Blockly.Blocks['on_start'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When robot starts");
-        this.setNextStatement(true, null);
+            .appendField(getText("on_start"));
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setTooltip("Triggered when the robot starts");
+        this.setTooltip(getText("on_start_tooltip"));
     }
 };
 
 Blockly.Blocks['button_pressed'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When button")
-            .appendField(new Blockly.FieldDropdown([
-                ["A", "A"],
-                ["B", "B"]
-            ]), "BUTTON")
-            .appendField("pressed");
-        this.setNextStatement(true, null);
+            .appendField(getText("button_pressed"))
+            .appendField(new Blockly.FieldDropdown([["A", "A"], ["B", "B"]]), "BUTTON")
+            .appendField(getText("pressed"));
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setTooltip("Triggered when a specific button is pressed");
+        this.setTooltip(getText("button_pressed_tooltip"));
     }
 };
 
 Blockly.Blocks['obstacle_distance'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("At obstacle distance")
-            .appendField(new Blockly.FieldDropdown([
-                ["<", "<"],
-                [">", ">"]
-            ]), "BUTTON")
+            .appendField(getText("obstacle_distance"))
+            .appendField(new Blockly.FieldDropdown([["<", "<"], [">", ">"]]), "BUTTON")
             .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
             .appendField("cm");
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setNextStatement(true, null);
-        this.setTooltip("True when obstacle distance matches condition");
+        this.setTooltip(getText("obstacle_distance_tooltip"));
     }
 };
 
 Blockly.Blocks['distance_sensor_value'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Obstacle distance")
-            .appendField(new Blockly.FieldDropdown([
-                ["<", "<"],
-                [">", ">"]
-            ]), "BUTTON")
+            .appendField(getText("distance_sensor_value"))
+            .appendField(new Blockly.FieldDropdown([["<", "<"], [">", ">"]]), "BUTTON")
             .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
             .appendField("cm");
-        this.setColour(60);
         this.setOutput(true, "Boolean");
-        this.setTooltip("True when obstacle distance matches condition");
+        this.setColour(60);
+        this.setTooltip(getText("distance_sensor_value_tooltip"));
     }
 };
 
 Blockly.Blocks['sound_intensity'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("When sound intensity ")
-            .appendField(new Blockly.FieldDropdown([
-                ["<", "<"],
-                [">", ">"]
-            ]), "BUTTON")
-            .appendField(new Blockly.FieldNumber(1, 50), "VALUE")
-        this.setNextStatement(true, null);
+            .appendField(getText("sound_intensity"))
+            .appendField(new Blockly.FieldDropdown([["<", "<"], [">", ">"]]), "BUTTON")
+            .appendField(new Blockly.FieldNumber(1, 50), "VALUE");
+        this.setNextStatement(true);
         this.setColour("#FF5733");
-        this.setTooltip("Triggered when the distance sensor reads less than the specified value");
+        this.setTooltip(getText("sound_intensity_tooltip"));
     }
 };
 
 Blockly.Blocks['random_number'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Random number from")
+            .appendField(getText("random_number"))
             .appendField(new Blockly.FieldNumber(1, 0), "MIN")
-            .appendField("to")
+            .appendField(getText("to"))
             .appendField(new Blockly.FieldNumber(10, 0), "MAX");
         this.setOutput(true, "Number");
         this.setColour(230);
-        this.setTooltip("Returns a random number between two values");
+        this.setTooltip(getText("random_number_tooltip"));
     }
 };
 
 Blockly.Blocks['camera_watch'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("camera detects object");
+            .appendField(getText("camera_watch"));
         this.setOutput(true, "Boolean");
         this.setColour(210);
-        this.setTooltip("Returns true if the camera detects an object");
-        this.setHelpUrl("");
+        this.setTooltip(getText("camera_watch_tooltip"));
     }
 };
+
 
 const customColors = {
     'controls_if': '#E67E22',
@@ -451,7 +373,7 @@ const customColors = {
 const originalInit = Blockly.Blocks['controls_if'].init;
 Blockly.Blocks['controls_if'].init = function() {
     originalInit.call(this);
-    this.setColour('#E67E22'); // your custom color
+    this.setColour('#E67E22');
 };
 
 

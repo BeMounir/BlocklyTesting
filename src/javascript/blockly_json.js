@@ -14,7 +14,6 @@ const blockHandlers = {
     on_start: () => ({action: "onStart"}),
     camera_detects_object: () => ({action: "cameraDetectsObject", value: "WIP",}),
     camera_gesture: b => ({action: "cameraGesture", value: b.getFieldValue("GESTURE"),}),
-    microphone_sound: b => ({action: "microphoneSound", value: b.getFieldValue("SPEECH_DETECTION"),}),
     button_pressed: b => ({action: "buttonPressed", value: b.getFieldValue("BUTTON"),}),
     activate_led: b => ({action: "activateLed", pin: parseInt(b.getFieldValue("VALUE")), color: b.getFieldValue("COLOR")}),
     activate_all_leds: b => ({action: "activateAllLeds", color: b.getFieldValue("COLOR")}),
@@ -136,20 +135,6 @@ const blockHandlers = {
         return {type: "print", value};
     },
 
-    event_call: b => {
-        const condBlock = b.getInputTargetBlock("COND");
-        const doBlock = b.getInputTargetBlock("DO");
-        const condition = blockToJson(condBlock);
-
-        const commands = [];
-        let current = doBlock;
-        while (current) {
-            const cmd = blockToJson(current);
-            if (cmd) commands.push(cmd);
-            current = current.getNextBlock();
-        }
-        return {type: "if", condition, commands};
-    },
     random_number: b => {
         const min = parseInt(b.getFieldValue("MIN"));
         const max = parseInt(b.getFieldValue("MAX"));
