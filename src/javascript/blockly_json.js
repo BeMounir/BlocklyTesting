@@ -35,7 +35,6 @@ const blockHandlers = {
     text: b => ({type: "text", value: b.getFieldValue("TEXT")}),
 
     controls_if: b => {
-        // Helper to collect commands from a DO input
         const collectCommands = (inputName) => {
             const commands = [];
             let current = b.getInputTargetBlock(inputName);
@@ -92,6 +91,23 @@ const blockHandlers = {
             current = current.getNextBlock();
         }
         return {type: "repeat", times, commands};
+    },
+
+    controls_forever: b => {
+        const doBlock = b.getInputTargetBlock("DO");
+        const commands = [];
+
+        let current = doBlock;
+        while (current) {
+            const cmd = blockToJson(current);
+            if (cmd) commands.push(cmd);
+            current = current.getNextBlock();
+        }
+
+        return {
+            type: "forever",
+            commands
+        };
     },
 
     controls_whileUntil: b => {

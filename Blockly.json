@@ -1,15 +1,8 @@
 {
   "commands": [
     {
-      "action": "moveForward",
-      "value": 10
-    },
-    {
-      "type": "print",
-      "value": {
-        "type": "text",
-        "value": "test"
-      }
+      "type": "forever",
+      "commands": []
     }
   ]
 }

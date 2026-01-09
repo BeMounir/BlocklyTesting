@@ -83,7 +83,8 @@ window.addEventListener('DOMContentLoaded', () => {
         logic: [
             'controls_if',
             'controls_whileUntil',
-            'controls_repeat_ext'
+            'controls_repeat_ext',
+            'controls_forever'
         ],
         text: [
             'text',

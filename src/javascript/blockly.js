@@ -345,7 +345,7 @@ Blockly.Blocks['random_number'] = {
             .appendField(getText("to"))
             .appendField(new Blockly.FieldNumber(10, 0), "MAX");
         this.setOutput(true, "Number");
-        this.setColour(230);
+        this.setColour("#1ABC9C");
         this.setTooltip(getText("random_number_tooltip"));
     }
 };
@@ -360,6 +360,20 @@ Blockly.Blocks['camera_watch'] = {
     }
 };
 
+Blockly.Blocks['controls_forever'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(getText("forever"));
+        this.appendStatementInput("DO")
+            .appendField(getText("do"));
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour('#E67E22');
+        this.setTooltip(getText("forever_tooltip"));
+    }
+};
+
+
 
 const customColors = {
     'controls_if': '#E67E22',
@@ -367,7 +381,9 @@ const customColors = {
     'controls_if_else': '#E67E22',
     'controls_repeat_ext': '#E67E22',
     'controls_whileUntil': '#E67E22',
-    'math_number': '#F1C40F'
+    'math_number': '#1ABC9C',
+    'math_arithmetic': '#1ABC9C',
+    'logic_compare': '#1ABC9C',
 };
 
 const originalInit = Blockly.Blocks['controls_if'].init;
