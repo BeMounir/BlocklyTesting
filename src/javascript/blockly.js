@@ -388,6 +388,7 @@ Blockly.Blocks['camera_direction'] = {
             );
 
         this.appendStatementInput("DO")
+            .setCheck(null)
             .appendField(getText("do"));
 
         this.setPreviousStatement(true);

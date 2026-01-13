@@ -157,10 +157,23 @@ const blockHandlers = {
         const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
         return {type: "number", value: randomValue};
     },
-    camera_direction: b => ({
-        type: "cameraGesture",
-        value: b.getFieldValue("GESTURE")
-    }),
+    camera_direction: b => {
+        // Collect inner blocks inside this block
+        const commands = [];
+        let current = b.getInputTargetBlock("DO");
+        while (current) {
+            const cmd = blockToJson(current);
+            if (cmd) commands.push(cmd);
+            current = current.getNextBlock();
+        }
+
+        return {
+            type: "cameraGesture",
+            value: b.getFieldValue("GESTURE"),
+            commands // nested blocks go here
+        };
+    },
+
 };
 
 function blockToJson(block) {

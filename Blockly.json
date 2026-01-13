@@ -2,7 +2,12 @@
   "commands": [
     {
       "type": "cameraGesture",
-      "value": "LEFT"
+      "value": "RIGHT",
+      "commands": [
+        {
+          "action": "stop_test"
+        }
+      ]
     }
   ]
 }
