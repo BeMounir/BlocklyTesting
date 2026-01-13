@@ -373,6 +373,29 @@ Blockly.Blocks['controls_forever'] = {
     }
 };
 
+Blockly.Blocks['camera_direction'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(getText("camera_direction"))
+            .appendField(
+                new Blockly.FieldDropdown([
+                    [getText("gesture_up"), "UP"],
+                    [getText("gesture_right"), "RIGHT"],
+                    [getText("gesture_left"), "LEFT"],
+                    [getText("gesture_down"), "DOWN"]
+                ]),
+                "GESTURE"
+            );
+
+        this.appendStatementInput("DO")
+            .appendField(getText("do"));
+
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setColour("#E67E22");
+        this.setTooltip(getText("camera_direction_tooltip"));
+    }
+};
 
 
 const customColors = {

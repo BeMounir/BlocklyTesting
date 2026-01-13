@@ -157,6 +157,10 @@ const blockHandlers = {
         const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
         return {type: "number", value: randomValue};
     },
+    camera_direction: b => ({
+        type: "cameraGesture",
+        value: b.getFieldValue("GESTURE")
+    }),
 };
 
 function blockToJson(block) {

@@ -1,6 +1,10 @@
 let port;
 let workspace;
 
+function t(key) {
+    return i18next.t(key);
+}
+
 function loadPreset(xmlString) {
     if (!xmlString || !workspace) return;
 
@@ -84,7 +88,8 @@ window.addEventListener('DOMContentLoaded', () => {
             'controls_if',
             'controls_whileUntil',
             'controls_repeat_ext',
-            'controls_forever'
+            'controls_forever',
+            'camera_direction'
         ],
         text: [
             'text',
@@ -269,6 +274,6 @@ document.getElementById("presetBtnHeader").addEventListener("click", () => {
         if (chosenPreset === null) return;
         const preset = presets.find(p => p.id === chosenPreset);
         if (preset) loadPreset(preset.xml);
-        showCustomAlert("Voorbeeldprogamma is geladen", "Success");
+        showCustomAlert(t("preset_loaded_msg"), t("success_title"));
     });
 });

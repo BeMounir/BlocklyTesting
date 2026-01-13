@@ -66,7 +66,19 @@ const translations = {
 
         // Utility
         random_number: "Random number",
-        random_number_tooltip: "Generate a random number"
+        random_number_tooltip: "Generate a random number",
+
+        // Camera / Logic
+        camera_direction: "If camera gesture is",
+        camera_direction_tooltip: "Execute blocks when the camera detects the selected gesture",
+
+        gesture_up: "Up",
+        gesture_right: "Right",
+        gesture_left: "Left",
+        gesture_down: "Down",
+
+        do: "do",
+
     },
 
     nl: {
@@ -140,7 +152,19 @@ const translations = {
 
         // Utility
         random_number: "Willekeurig getal",
-        random_number_tooltip: "Genereer een willekeurig getal"
+        random_number_tooltip: "Genereer een willekeurig getal",
+
+        // Camera / Logica
+        camera_direction: "Als camera-gebaar is",
+        camera_direction_tooltip: "Voer blokken uit wanneer de camera het gekozen gebaar herkent",
+
+        gesture_up: "Omhoog",
+        gesture_right: "Rechts",
+        gesture_left: "Links",
+        gesture_down: "Omlaag",
+
+        do: "doe",
+
     }
 };
 
@@ -159,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "Presets": " Presets",
                     "Events": "Events",
                     "Movement": "Movement",
-                    "Toon": "Toon",
+                    "Toon": "LED",
                     "Sound": "Sound",
                     "Functions": "Functions",
                     "Logic": "Logic",
@@ -172,7 +196,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     "SaveProjectMessage": "Enter a project name:",
                     "OK": "OK",
                     "Cancel": "Cancel",
-                    "MyProject": "MyProject"
+                    "MyProject": "MyProject",
+
+                    robot_connected_msg: "The robot is connected!",
+                    connected_title: "Connected",
+
+                    not_connected_msg: "Not connected to the robot!",
+                    error_title: "Error",
+
+                    no_code_msg: "Nothing to send, add some blocks!",
+                    warning_title: "Warning",
+
+                    send_error_msg: "Error sending to robot!",
+                    success_title: "Success",
+
+                    code_sent_msg: "Your code was sent to the robot and saved!",
+                    load_success_msg: "Your file was loaded successfully!",
+                    load_error_msg: "Invalid Blockly XML file!",
+
+                    workspace_empty_msg: "There is nothing to save!",
+                    save_title: "Save",
+
+                    confirm_clear_workspace_msg: "Are you sure you want to clear the workspace? This cannot be undone.",
+                    confirm_title: "Confirmation",
+
+                    workspace_cleared_msg: "Workspace has been cleared.",
+
+                    preset_loaded_msg: "Example program loaded successfully!"
                 }
             },
             nl: {
@@ -197,7 +247,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     "SaveProjectMessage": "Voer een projectnaam in:",
                     "OK": "OK",
                     "Cancel": "Annuleren",
-                    "MyProject": "MijnProject"
+                    "MyProject": "MijnProject",
+
+                    robot_connected_msg: "De robot is geconnect!",
+                    connected_title: "Verbonden",
+
+                    not_connected_msg: "Niet verbonden met de robot!",
+                    error_title: "Fout",
+
+                    no_code_msg: "Niks gestuurd, voeg blocks toe!",
+                    warning_title: "Waarschuwing",
+
+                    send_error_msg: "Fout bij verzenden naar robot!",
+                    success_title: "Succes",
+
+                    code_sent_msg: "Jouw code is naar de robot gestuurd en opgeslagen!",
+                    load_success_msg: "Het laden van jouw bestand is gelukt!",
+                    load_error_msg: "Geen geldig Blockly XML bestand!",
+
+                    workspace_empty_msg: "Er is niks om op te slaan!",
+                    save_title: "Opslaan",
+
+                    confirm_clear_workspace_msg: "Weet je zeker dat je de workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.",
+                    confirm_title: "Bevestiging",
+
+                    workspace_cleared_msg: "Workspace is leeggemaakt.",
+
+                    preset_loaded_msg: "Voorbeeldprogramma is geladen!"
+
                 }
             }
         }

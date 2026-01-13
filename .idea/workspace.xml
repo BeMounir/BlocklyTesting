@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="custom variables en translation">
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="forever loop and colours">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/blockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/blockly_json.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/blockly_json.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javascript/translates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/translates.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +109,7 @@
       <workItem from="1764073863443" duration="33437000" />
       <workItem from="1764373504742" duration="4960000" />
       <workItem from="1764674393078" duration="652000" />
-      <workItem from="1765196985700" duration="24353000" />
+      <workItem from="1765196985700" duration="28734000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -285,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1766152676239</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="forever loop and colours">
+      <created>1767960800484</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1767960800489</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +311,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="push" />
     <MESSAGE value="json thing" />
     <MESSAGE value="Css and while loop fixes" />
     <MESSAGE value="weet ik veel" />
@@ -328,6 +335,7 @@
     <MESSAGE value="added distance sensor value and start at voorbeeldprogammas" />
     <MESSAGE value="changed presets system and colours for blocks" />
     <MESSAGE value="custom variables en translation" />
-    <option name="LAST_COMMIT_MESSAGE" value="custom variables en translation" />
+    <MESSAGE value="forever loop and colours" />
+    <option name="LAST_COMMIT_MESSAGE" value="forever loop and colours" />
   </component>
 </project>

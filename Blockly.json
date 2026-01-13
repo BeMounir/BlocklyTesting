@@ -1,8 +1,8 @@
 {
   "commands": [
     {
-      "type": "forever",
-      "commands": []
+      "type": "cameraGesture",
+      "value": "LEFT"
     }
   ]
 }
