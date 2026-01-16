@@ -162,6 +162,5 @@ function showPresetPicker(presetCallback, title = "Kies een voorbeeldprogamma.")
                 presetContainer.appendChild(btn);
             });
     }
-
     renderPresets();
 }

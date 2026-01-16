@@ -363,7 +363,7 @@ Blockly.Blocks['camera_watch'] = {
 Blockly.Blocks['controls_forever'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(getText("forever"));
+            .appendField(getText("controls_forever"));
         this.appendStatementInput("DO")
             .appendField(getText("do"));
         this.setPreviousStatement(true);

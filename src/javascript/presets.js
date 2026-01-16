@@ -141,39 +141,4 @@ const presets = [
     `,
         image: "src/image/presets/4.jpeg"
     },
-    {
-        id: 5,
-        name: "Preset 5",
-        tags: ["basic"],
-        xml: `
-<xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="text_print" x="80" y="80">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">test</field>
-      </shadow>
-    </value>
-  </block>
-</xml>
-    `,
-        image: "src/image/presets/5.jpeg"
-    },
-    {
-        id: 6,
-        name: "Preset 6",
-        tags: ["basic"],
-        xml: `
-<xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="text_print" x="80" y="80">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">test</field>
-      </shadow>
-    </value>
-  </block>
-</xml>
-    `,
-        image: "src/image/presets/6.jpeg"
-    },
-];
-
+]

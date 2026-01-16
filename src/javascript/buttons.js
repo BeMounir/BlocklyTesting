@@ -47,8 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const categories = {
         events: [
-            'start_robot',
-            'stop_robot',
             'sound_intensity',
             'camera_detects_object',
             'camera_gesture',
@@ -102,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'robot_detects_bottle',
             'camera_watch'
         ],
-        variables: 'VARIABLE',
+        // variables: 'VARIABLE',
     };
 
     const flyout = workspace.getFlyout();
@@ -125,7 +123,6 @@ window.addEventListener('DOMContentLoaded', () => {
     function refreshVariableFlyout() {
         let variableBlocks = Blockly.Variables.flyoutCategory(workspace);
 
-        // Voeg de "Maak variabele" knop weer bovenaan toe
         const xmlCreate = Blockly.utils.xml.createElement('button');
         xmlCreate.setAttribute('text', t('create_variable_btn'));
         xmlCreate.setAttribute('callbackKey', 'CREATE_VARIABLE');
