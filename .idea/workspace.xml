@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="fix">
-      <change afterPath="$PROJECT_DIR$/src/image/presets/3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/presets/4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/presets/5.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/presets/6.jpeg" afterDir="false" />
+    <list default="true" id="a58ad909-9e73-4818-b905-6c80a4702914" name="Changes" comment="translations en presets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blockly.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/presets/2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/presets/2.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/buttons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javascript/presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/presets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/javascript/translates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/javascript/translates.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +110,7 @@
       <workItem from="1764073863443" duration="33437000" />
       <workItem from="1764373504742" duration="4960000" />
       <workItem from="1764674393078" duration="652000" />
-      <workItem from="1765196985700" duration="36089000" />
+      <workItem from="1765196985700" duration="37263000" />
     </task>
     <task id="LOCAL-00001" summary="reordered the project">
       <created>1758292809972</created>
@@ -316,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1768327551019</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="translations en presets">
+      <created>1768563744232</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1768563744232</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +333,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="weet ik veel" />
     <MESSAGE value="header en logo toegevoegd. custom blocks aangemaakt" />
     <MESSAGE value="index.html file verplaatst voor plesk" />
     <MESSAGE value="quality of life features zoals clear workspace toegevoegd en naam van workspace" />
@@ -359,6 +357,7 @@
     <MESSAGE value="forever loop and colours" />
     <MESSAGE value="added new loop" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="translations en presets" />
+    <option name="LAST_COMMIT_MESSAGE" value="translations en presets" />
   </component>
 </project>

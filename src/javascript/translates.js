@@ -62,7 +62,8 @@ const translations = {
         gesture_right: "Right",
         gesture_left: "Left",
         gesture_down: "Down",
-        do: "do"
+        do: "do",
+        controls_forever: "Forever"
     },
     nl: {
         robot_forward: "Ga vooruit",
@@ -129,7 +130,8 @@ const translations = {
         gesture_right: "Rechts",
         gesture_left: "Links",
         gesture_down: "Omlaag",
-        do: "doe"
+        do: "doe",
+        controls_forever: "Voor altijd"
     }
 };
 
@@ -250,6 +252,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.textContent = i18next.t(key);
             }
         });
+
+        if (currentLanguage === 'nl') {
+            Blockly.Msg["CONTROLS_IF_MSG_IF"] = "als";
+            Blockly.Msg["CONTROLS_IF_MSG_ELSEIF"] = "anders als";
+            Blockly.Msg["CONTROLS_IF_MSG_ELSE"] = "anders";
+            Blockly.Msg["CONTROLS_IF_MSG_THEN"] = "doe";
+            Blockly.Msg["CONTROLS_WHILEUNTIL_OPERATOR_WHILE"] = "herhaal zolang";
+            Blockly.Msg["CONTROLS_WHILEUNTIL_OPERATOR_UNTIL"] = "herhaal totdat";
+            Blockly.Msg["CONTROLS_REPEAT_TITLE"] = "herhaal %1 keer";
+            Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"] = "doe";
+            Blockly.Msg["LOGIC_COMPARE_TOOLTIP_EQ"] = "Gelijk aan";
+        } else {
+            Blockly.Msg["CONTROLS_IF_MSG_IF"] = "if";
+            Blockly.Msg["CONTROLS_IF_MSG_ELSEIF"] = "else if";
+            Blockly.Msg["CONTROLS_IF_MSG_ELSE"] = "else";
+            Blockly.Msg["CONTROLS_IF_MSG_THEN"] = "do";
+            Blockly.Msg["CONTROLS_WHILEUNTIL_OPERATOR_WHILE"] = "repeat while";
+            Blockly.Msg["CONTROLS_WHILEUNTIL_OPERATOR_UNTIL"] = "repeat until";
+            Blockly.Msg["CONTROLS_REPEAT_TITLE"] = "repeat %1 times";
+            Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"] = "do";
+        }
+
+        // Ververs de toolbox en workspace zodat de teksten echt veranderen
+        if (typeof workspace !== 'undefined') {
+            workspace.refreshToolboxSelection();
+            // Voor de blokken die al in het veld staan:
+            const blocks = workspace.getAllBlocks(false);
+            blocks.forEach(block => {
+                if (block.initSvg) block.initSvg();
+                if (block.render) block.render();
+            });
+        }
+
         document.querySelectorAll('[title]').forEach(el => {
             const key = el.dataset.i18nTitle;
             if(key) el.title = i18next.t(key);
