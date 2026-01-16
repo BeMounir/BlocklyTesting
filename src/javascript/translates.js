@@ -63,7 +63,8 @@ const translations = {
         gesture_left: "Left",
         gesture_down: "Down",
         do: "do",
-        controls_forever: "Forever"
+        controls_forever: "Forever",
+        create_variable_btn: "Maak een variabele...",
     },
     nl: {
         robot_forward: "Ga vooruit",
@@ -131,7 +132,8 @@ const translations = {
         gesture_left: "Links",
         gesture_down: "Omlaag",
         do: "doe",
-        controls_forever: "Voor altijd"
+        controls_forever: "Voor altijd",
+        create_variable_btn: "Make a variable...",
     }
 };
 
@@ -263,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Blockly.Msg["CONTROLS_REPEAT_TITLE"] = "herhaal %1 keer";
             Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"] = "doe";
             Blockly.Msg["LOGIC_COMPARE_TOOLTIP_EQ"] = "Gelijk aan";
+            Blockly.Msg["TEXT_PRINT_TITLE"] = "print %1";
         } else {
             Blockly.Msg["CONTROLS_IF_MSG_IF"] = "if";
             Blockly.Msg["CONTROLS_IF_MSG_ELSEIF"] = "else if";
@@ -272,12 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
             Blockly.Msg["CONTROLS_WHILEUNTIL_OPERATOR_UNTIL"] = "repeat until";
             Blockly.Msg["CONTROLS_REPEAT_TITLE"] = "repeat %1 times";
             Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"] = "do";
+            Blockly.Msg["TEXT_PRINT_TITLE"] = "print %1";
         }
 
-        // Ververs de toolbox en workspace zodat de teksten echt veranderen
         if (typeof workspace !== 'undefined') {
             workspace.refreshToolboxSelection();
-            // Voor de blokken die al in het veld staan:
             const blocks = workspace.getAllBlocks(false);
             blocks.forEach(block => {
                 if (block.initSvg) block.initSvg();

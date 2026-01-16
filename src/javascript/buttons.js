@@ -112,33 +112,38 @@ window.addEventListener('DOMContentLoaded', () => {
         flyout.setVisible(true);
     }
 
+    workspace.registerButtonCallback('CREATE_VARIABLE', () => {
+        Blockly.Variables.createVariable(workspace, (variableId) => {
+            if (variableId) {
+                if (selectedCategory === 'variables') {
+                    refreshVariableFlyout();
+                }
+            }
+        });
+    });
+
+    function refreshVariableFlyout() {
+        let variableBlocks = Blockly.Variables.flyoutCategory(workspace);
+
+        // Voeg de "Maak variabele" knop weer bovenaan toe
+        const xmlCreate = Blockly.utils.xml.createElement('button');
+        xmlCreate.setAttribute('text', t('create_variable_btn'));
+        xmlCreate.setAttribute('callbackKey', 'CREATE_VARIABLE');
+
+        variableBlocks.unshift(xmlCreate);
+
+        flyout.show(variableBlocks);
+    }
+
     function showCategory(categoryName) {
-        const blockTypes = categories[categoryName] || [];
+        selectedCategory = categoryName;
 
         if (categoryName === 'variables') {
-            const variableBlocks = [];
-
-            const xmlCreate = Blockly.utils.xml.createElement('button');
-            xmlCreate.setAttribute('text', 'Make a variable...');
-            xmlCreate.setAttribute('callbackKey', 'CREATE_VARIABLE');
-            variableBlocks.push(xmlCreate);
-
-            const xmlSet = Blockly.utils.xml.createElement('block');
-            xmlSet.setAttribute('type', 'variables_set');
-            variableBlocks.push(xmlSet);
-
-            const xmlGet = Blockly.utils.xml.createElement('block');
-            xmlGet.setAttribute('type', 'variables_get');
-            variableBlocks.push(xmlGet);
-
-            workspace.registerButtonCallback('CREATE_VARIABLE', () => {
-                Blockly.Variables.createVariable(workspace);
-            });
-
-            flyout.show(variableBlocks);
+            refreshVariableFlyout();
             return;
         }
 
+        const blockTypes = categories[categoryName] || [];
         const xmlArray = blockTypes.map(type => {
             const xml = Blockly.utils.xml.createElement('block');
             xml.setAttribute('type', type);
@@ -147,9 +152,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         flyout.show(xmlArray);
     }
-
-
-
     document.querySelectorAll('#categoryButtons button').forEach(btn => {
         btn.addEventListener('click', () => {
             selectedCategory = btn.dataset.category;

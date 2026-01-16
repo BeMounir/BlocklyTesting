@@ -170,10 +170,29 @@ const blockHandlers = {
         return {
             type: "cameraGesture",
             value: b.getFieldValue("GESTURE"),
-            commands // nested blocks go here
+            commands
         };
     },
 
+    variables_get: b => {
+        const variableId = b.getFieldValue('VAR');
+        const variable = b.workspace.getVariableById(variableId);
+        return {
+            type: "variableGet",
+            name: variable ? variable.name : "unknown"
+        };
+    },
+
+    variables_set: b => {
+        const variableId = b.getFieldValue('VAR');
+        const variable = b.workspace.getVariableById(variableId);
+        const valueBlock = b.getInputTargetBlock("VALUE");
+        return {
+            type: "variableSet",
+            name: variable ? variable.name : "unknown",
+            value: blockToJson(valueBlock)
+        };
+    },
 };
 
 function blockToJson(block) {

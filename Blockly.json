@@ -1,11 +1,39 @@
 {
   "commands": [
     {
-      "type": "cameraGesture",
-      "value": "UP",
+      "action": "onStart"
+    },
+    {
+      "type": "forever",
       "commands": [
         {
-          "action": "stop_test"
+          "type": "if",
+          "condition": {
+            "action": "getDistanceSensorValue",
+            "op": "<",
+            "value": 15
+          },
+          "commands": [
+            {
+              "action": "stop"
+            },
+            {
+              "action": "moveBackward",
+              "value": 10
+            },
+            {
+              "action": "turnLeft",
+              "value": 90
+            }
+          ],
+          "else": {
+            "commands": [
+              {
+                "action": "moveForward",
+                "value": 10
+              }
+            ]
+          }
         }
       ]
     }
