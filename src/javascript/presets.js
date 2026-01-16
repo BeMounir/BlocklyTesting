@@ -5,12 +5,18 @@ const presets = [
         tags: ["ai"],
         xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="controls_repeat_ext" x="20" y="20">
-    <value name="TIMES">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
+  <block type="camera_direction" id="p?[3r*e#S.ly%%gwnPg." x="-225" y="-225">
+    <field name="GESTURE">UP</field>
+    <statement name="DO">
+      <block type="activate_all_leds" id="$6x-L%]qAhxPZfBxsB(M">
+        <field name="COLOR">#33cc00</field>
+        <next>
+          <block type="robot_forward" id="m=?p2dG?ig^Rnez)2?+i">
+            <field name="VALUE">20</field>
+          </block>
+        </next>
+      </block>
+    </statement>
   </block>
 </xml>
     `,
@@ -18,17 +24,33 @@ const presets = [
     },
     {
         id: 2,
-        name: "Obstacle Avoidance",
-        tags: ["sensors", "navigation"],
+        name: "The Square",
+        tags: ["basic", "navigation"],
         xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="start_robot" x="-195" y="-75">
+  <block type="on_start" id="6K!JOB.SSoLo}?,jd8|P" x="-315" y="-195">
     <next>
-      <block type="wait">
-        <field name="VALUE">5</field>
-        <next>
-          <block type="stop_robot"></block>
-        </next>
+      <block type="controls_forever" id="M-3M;:)9{OZ5U^TH}O9M">
+        <statement name="DO">
+          <block type="robot_forward" id="b}Y,Jd68)|#T[J?rdfKv">
+            <field name="VALUE">10</field>
+            <next>
+              <block type="robot_right" id="f3:mt:e=9CCXEx/pXhM1">
+                <field name="VALUE">10</field>
+                <next>
+                  <block type="robot_backward" id=":K/,QafBgisz4l!X?LOI">
+                    <field name="VALUE">10</field>
+                    <next>
+                      <block type="robot_left" id="h6)kMQ7T3[Zo7xH\`v(}i">
+                        <field name="VALUE">10</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
       </block>
     </next>
   </block>
@@ -38,98 +60,72 @@ const presets = [
     },
     {
         id: 3,
-        name: "Line Follower",
+        name: "Obstacle Detector",
         tags: ["navigation"],
         xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="text_print" x="80" y="80">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">test</field>
-      </shadow>
-    </value>
+  <block type="on_start" id=",{7n)PZ0Z_w)z}L^otK{" x="-345" y="-195">
+    <next>
+      <block type="controls_forever" id="yE4Q7*!+,]WLeW)@-O|:">
+        <statement name="DO">
+          <block type="controls_if" id="=9g!Tb%#i1xUno=?jdo2">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="distance_sensor_value" id="]yV,8U@mT6[/4(aWVI@O">
+                <field name="BUTTON">&lt;</field>
+                <field name="VALUE">15</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="robot_stop" id="%7;9b=*CCNXd~q/QkdP+">
+                <next>
+                  <block type="robot_backward" id="z^\`yx:(]7F{Cx^LZML^1">
+                    <field name="VALUE">10</field>
+                    <next>
+                      <block type="turn_left" id="caO=yJ6[n7J]sj7%_r_5">
+                        <field name="ANGLE">90</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="robot_forward" id="p%$F6Hu-\`4BSw~Ot|g|b">
+                <field name="VALUE">10</field>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </next>
   </block>
 </xml>
     `,
-        image: "src/image/presets/2.jpeg"
+        image: "src/image/presets/3.jpeg"
     },
     {
         id: 4,
-        name: "Bottle Detection",
-        tags: ["ai", "camera"],
+        name: "Police Sirens",
+        tags: ["basic"],
         xml: `
 <xml xmlns="https://developers.google.com/blockly/xml">
-  <block type="start_robot" id="vL-l$@UStk(a6HjIEx!+" x="-195" y="-285">
+  <block type="button_pressed" id="\`i{1gbn@]L#|j.#kFI#F" x="-45" y="-195">
+    <field name="BUTTON">A</field>
     <next>
-      <block type="wait" id="6je1\`v#LNKb)U*u4Y|x^">
-        <field name="VALUE">3</field>
-        <next>
-          <block type="stop_robot" id="Q)wu.[UvwGy1[g:M;;)x">
+      <block type="controls_forever" id="BL9GKv0cH@S5ML(|9S[d">
+        <statement name="DO">
+          <block type="activate_all_leds" id="L^eA9n|\`KGxDg%gr-9Q}">
+            <field name="COLOR">#ff0000</field>
             <next>
-              <block type="wait" id=")V9f1ibI9U.LD96rd2!*">
-                <field name="VALUE">3</field>
+              <block type="wait" id="KTb~V0~GSR{!RwKH)@x_">
+                <field name="VALUE">1</field>
                 <next>
-                  <block type="start_robot" id="1qdxxKC|m!K~wwJGx~=z">
+                  <block type="activate_all_leds" id="+Wm(@MX:WkRm^!U;dyUj">
+                    <field name="COLOR">#3333ff</field>
                     <next>
-                      <block type="wait" id="v9Xc~]09tl7E3?0sf@TO">
-                        <field name="VALUE">3</field>
-                        <next>
-                          <block type="stop_robot" id="{!_V/\`Q%B\`LQqPrK[dA=">
-                            <next>
-                              <block type="wait" id="$()*aSNT3@GJzSwne+)?">
-                                <field name="VALUE">3</field>
-                                <next>
-                                  <block type="start_robot" id="ff/-8pbdqs]AMub@FMh6">
-                                    <next>
-                                      <block type="wait" id="!VqGbd^#VTu?\`2l_mn3j">
-                                        <field name="VALUE">3</field>
-                                        <next>
-                                          <block type="stop_robot" id="eU\`x61m-aeit?vHucr%Q">
-                                            <next>
-                                              <block type="wait" id="fKC%;uK(-1j\`:2JUvsgC">
-                                                <field name="VALUE">3</field>
-                                                <next>
-                                                  <block type="start_robot" id=",WHXzBA7F8gzKeQz^Um.">
-                                                    <next>
-                                                      <block type="wait" id="yp:6vt#:Kl\`6CQj]^+sS">
-                                                        <field name="VALUE">3</field>
-                                                        <next>
-                                                          <block type="stop_robot" id="K^iP9LxdtJ4?2T(WFZho">
-                                                            <next>
-                                                              <block type="wait" id="qw)|%tR@wWrZaqCF#5-l">
-                                                                <field name="VALUE">3</field>
-                                                                <next>
-                                                                  <block type="start_robot" id="]Yd)qK@3b)R$tx?ZsmUy">
-                                                                    <next>
-                                                                      <block type="wait" id="Po4Wc?QLL8MkUj-G|qsw">
-                                                                        <field name="VALUE">3</field>
-                                                                        <next>
-                                                                          <block type="stop_robot" id="oV|7W[I8IUl4rA5rO;o_"></block>
-                                                                        </next>
-                                                                      </block>
-                                                                    </next>
-                                                                  </block>
-                                                                </next>
-                                                              </block>
-                                                            </next>
-                                                          </block>
-                                                        </next>
-                                                      </block>
-                                                    </next>
-                                                  </block>
-                                                </next>
-                                              </block>
-                                            </next>
-                                          </block>
-                                        </next>
-                                      </block>
-                                    </next>
-                                  </block>
-                                </next>
-                              </block>
-                            </next>
-                          </block>
-                        </next>
+                      <block type="wait" id=")zSlbDX7mjhZk|Ck7G~5">
+                        <field name="VALUE">1</field>
                       </block>
                     </next>
                   </block>
@@ -137,13 +133,13 @@ const presets = [
               </block>
             </next>
           </block>
-        </next>
+        </statement>
       </block>
     </next>
   </block>
 </xml>
     `,
-        image: "src/image/presets/2.jpeg"
+        image: "src/image/presets/4.jpeg"
     },
     {
         id: 5,
@@ -160,7 +156,7 @@ const presets = [
   </block>
 </xml>
     `,
-        image: "src/image/presets/2.jpeg"
+        image: "src/image/presets/5.jpeg"
     },
     {
         id: 6,
@@ -177,7 +173,7 @@ const presets = [
   </block>
 </xml>
     `,
-        image: "src/image/presets/2.jpeg"
+        image: "src/image/presets/6.jpeg"
     },
 ];
 

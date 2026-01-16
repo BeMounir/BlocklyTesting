@@ -21,7 +21,7 @@ function loadPreset(xmlString) {
 document.getElementById("connectBtn").onclick = async () => {
     port = await navigator.serial.requestPort();
     await port.open({baudRate: 115200});
-    showCustomAlert("De robot is geconnect!", "Connected");
+    showCustomAlert(t("robot_connected_msg"), t("connected_title"));
 };
 
 async function uploadWorkspace(workspace, file) {
@@ -31,11 +31,11 @@ async function uploadWorkspace(workspace, file) {
         workspace.clear();
         Blockly.Xml.domToWorkspace(xmlDom, workspace);
         setTimeout(() => {
-            showCustomAlert("Het laden van jouw file is gelukt!", "Success");
+            showCustomAlert(t("load_success_msg"), t("success_title"));
         }, 0);
     } catch (err) {
         console.error("Error loading blocks:", err);
-        showCustomAlert("Geen goede Blockly XML file!", "Waarschuwing");
+        showCustomAlert(t("load_error_msg"), t("warning_title"));
     }
 }
 
@@ -161,14 +161,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("runBtn").addEventListener("click", async () => {
         if (!port) {
-            showCustomAlert("Niet verbonden met de robot!", "Fout");
+            showCustomAlert(t("not_connected_msg"), t("error_title"));
             return;
         }
         const jsonData = workspaceToJson(workspace);
         if (!jsonData.commands || jsonData.commands.length === 0) {
-            textArea.value = 'Niks gestuurd, voeg blocks toe!';
+            textArea.value = t("no_code_msg");
             setTimeout(() => {
-                showCustomAlert("Geen code om te sturen!", "Waarschuwing");
+                showCustomAlert(t("no_code_msg"), t("warning_title"));
             }, 100);
             return;
         }
@@ -181,7 +181,7 @@ window.addEventListener('DOMContentLoaded', () => {
             console.log("JSON sent to serial port:", jsonData);
         } catch (err) {
             console.error("Serial write error:", err);
-            showCustomAlert("Fout bij verzenden naar robot!", "Fout");
+            showCustomAlert(t("send_error_msg"), t("error_title"));
             return;
         }
         try {
@@ -195,7 +195,7 @@ window.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
             console.error("Error sending to server:", err);
         }
-        showCustomAlert("Jouw code is naar de robot gestuurd en opgeslagen!", "Success");
+        showCustomAlert(t("code_sent_msg"), t("success_title"));
     });
 
     const savedXml = localStorage.getItem('blocklyWorkspace');
@@ -218,11 +218,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('saveBlocksHeader').addEventListener('click', () => {
         if (workspace.getAllBlocks().length === 0) {
-            showCustomAlert("Er is niks om op te slaan!", "Waarschuwing");
+            showCustomAlert(t("workspace_empty_msg"), t("warning_title"));
             return;
         }
 
-        showCustomPrompt("Voer een projectnaam in:", "MijnProject","Opslaan" , (projectName) => {
+        showCustomPrompt(t("SaveProjectMessage"), t("MyProject"), t("SaveProjectTitle"), (projectName) => {
             if (!projectName) return;
 
             const safeName = projectName.replace(/[^a-z0-9_\-]/gi, '_');
@@ -250,11 +250,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     document.getElementById('newBtnHeader').addEventListener('click', () => {
-        showCustomConfirm("Weet u zeker dat u uw workspace wilt leegmaken? Dit kan niet ongedaan worden gemaakt.", (confirmed) => {
+        showCustomConfirm(t("confirm_clear_workspace_msg"), (confirmed) => {
             if (confirmed) {
                 workspace.clear();
                 textArea.value = '';
-                showCustomAlert("Workspace is leeggemaakt.", "Succes");}}, "Bevestiging");
+                showCustomAlert(t("workspace_cleared_msg"), t("success_title"));
+            }
+        }, t("confirm_title"));
     });
 
     document.getElementById('languageSelect').addEventListener('change', (e) => {

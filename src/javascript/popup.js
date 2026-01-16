@@ -145,7 +145,7 @@ function showPresetPicker(presetCallback, title = "Kies een voorbeeldprogamma.")
 
                 const img = document.createElement('div');
                 img.className = 'preset-image';
-                img.style.backgroundImage = `url(src/image/presets/${p.id}.jpeg)`;
+                img.style.backgroundImage = `url(${p.image})`;
 
                 const name = document.createElement('div');
                 name.className = 'preset-name';
