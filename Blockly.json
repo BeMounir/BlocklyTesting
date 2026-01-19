@@ -1,39 +1,16 @@
 {
   "commands": [
     {
-      "action": "onStart"
-    },
-    {
-      "type": "forever",
+      "type": "cameraGesture",
+      "value": "RIGHT",
       "commands": [
         {
-          "type": "if",
-          "condition": {
-            "action": "getDistanceSensorValue",
-            "op": "<",
-            "value": 15
-          },
-          "commands": [
-            {
-              "action": "stop"
-            },
-            {
-              "action": "moveBackward",
-              "value": 10
-            },
-            {
-              "action": "turnLeft",
-              "value": 90
-            }
-          ],
-          "else": {
-            "commands": [
-              {
-                "action": "moveForward",
-                "value": 10
-              }
-            ]
-          }
+          "action": "activateAllLeds",
+          "color": "#33cc00"
+        },
+        {
+          "action": "moveForward",
+          "value": 20
         }
       ]
     }

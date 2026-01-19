@@ -126,7 +126,7 @@ Blockly.Blocks['robot_detects'] = {
         this.appendDummyInput()
             .appendField(getText("robot_detects"));
         this.setOutput(true, "Boolean");
-        this.setColour(50);
+        this.setColour('#95A5A6');
         this.setTooltip(getText("robot_detects_tooltip"));
     }
 };
@@ -136,7 +136,7 @@ Blockly.Blocks['robot_detects_bottle'] = {
         this.appendDummyInput()
             .appendField(getText("robot_detects_bottle"));
         this.setOutput(true, "Boolean");
-        this.setColour(50);
+        this.setColour('#95A5A6');
         this.setTooltip(getText("robot_detects_bottle_tooltip"));
     }
 };
@@ -260,7 +260,7 @@ Blockly.Blocks['camera_ml_label'] = {
         this.appendDummyInput()
             .appendField(getText("camera_ml_label"));
         this.setOutput(true, "String");
-        this.setColour(120);
+        this.setColour('#95A5A6');
         this.setTooltip(getText("camera_ml_label_tooltip"));
     }
 };
@@ -320,7 +320,7 @@ Blockly.Blocks['distance_sensor_value'] = {
             .appendField(new Blockly.FieldNumber(1, 0), "VALUE")
             .appendField("cm");
         this.setOutput(true, "Boolean");
-        this.setColour(60);
+        this.setColour('#95A5A6');
         this.setTooltip(getText("distance_sensor_value_tooltip"));
     }
 };
@@ -355,7 +355,7 @@ Blockly.Blocks['camera_watch'] = {
         this.appendDummyInput()
             .appendField(getText("camera_watch"));
         this.setOutput(true, "Boolean");
-        this.setColour(210);
+        this.setColour('#95A5A6');
         this.setTooltip(getText("camera_watch_tooltip"));
     }
 };
@@ -408,6 +408,8 @@ const customColors = {
     'math_number': '#1ABC9C',
     'math_arithmetic': '#1ABC9C',
     'logic_compare': '#1ABC9C',
+    'text_print': '#34495E',
+    'text': '#34495E',
 };
 
 const originalInit = Blockly.Blocks['controls_if'].init;
